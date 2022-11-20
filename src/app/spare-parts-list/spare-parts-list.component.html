@@ -1,0 +1,23 @@
+<table class="table table-light">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let sparePart of spareParts" [ngClass]="{'promotion' : sparePart.promotion}">
+            <td>{{sparePart.name}}</td>
+            <td>{{sparePart.brand}}</td>
+            <td *ngIf="sparePart.promotion == true">{{sparePart.amount*0.8 | currency}}</td>
+            <td *ngIf="sparePart.promotion == false">{{sparePart.amount | currency}}</td>
+            <td><span *ngIf="sparePart.stock == 0" class="badge bg-danger ms-2 mt-2">SIN STOCK</span><span *ngIf="sparePart.stock != 0">{{sparePart.stock}}</span></td>
+        </tr>
+    </tbody>
+    <div>
+        <p>*Texto resaltado para productos en oferta</p>
+    </div>
+</table>
