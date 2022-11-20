@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { SparePartsListComponent } from './spare-parts-list/spare-parts-list.component';
 import { SparePartsCartComponent } from './spare-parts-cart/spare-parts-cart.component';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,8 @@ import { SparePartsCartComponent } from './spare-parts-cart/spare-parts-cart.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
