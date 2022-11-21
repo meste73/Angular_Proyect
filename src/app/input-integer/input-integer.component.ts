@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SparePart } from '../spare-parts-list/spare-part';
 
 @Component({
   selector: 'app-input-integer',
@@ -28,6 +29,16 @@ export class InputIntegerComponent implements OnInit{
   downQuantity(): void{
     if(this.quantity > 0){
       this.quantity--;
+      this.quantityChange.emit(this.quantity);
+    }
+  }
+
+  changeQuantity(event: any): void{
+    if(event.key < "0" || event.key > "9"){
+      alert("Valor incorrecto");
+      this.quantity = 0;
+    } else if(this.quantity <= this.limit){
+      this.quantity = Number(event.key);
       this.quantityChange.emit(this.quantity);
     }
   }

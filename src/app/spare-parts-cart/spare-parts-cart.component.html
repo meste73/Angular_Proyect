@@ -1,9 +1,13 @@
 <div>
-    <table class="table table-light table-border">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">Carrito de compras</th>
-            </tr>
-        </thead>
-    </table>
+    <h3>Carrito de compras</h3>
+    <ul>
+        <li *ngFor="let s of spareParts">
+            <span *ngIf="s.quantity != 0">
+                {{s.name}}: {{s.quantity}}
+            </span>
+            <span *ngIf="s.quantity == 0">
+                {{s.name}}: Sin stock
+            </span>
+        </li>
+    </ul>
 </div>

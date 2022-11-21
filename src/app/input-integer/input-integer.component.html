@@ -4,6 +4,7 @@
         type="text"
         class="form-control"
         value="{{quantity}}"
-        [(ngModel)]="quantity">
+        [(ngModel)]="quantity"
+        (keyup)="changeQuantity($event)">
     <button class="btn btn-secondary btn-sm" (click)="upQuantity(limit)">+</button>
 </div>

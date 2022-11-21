@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SparePartsCartService } from '../spare-parts-cart.service';
+import { SparePartsDataService } from '../spare-parts-data.service';
 import { SparePart } from './spare-part';
 
 @Component({
@@ -61,11 +62,14 @@ export class SparePartsListComponent implements OnInit {
     quantity: 0
   }];
 
-  constructor(private sparePartsCart: SparePartsCartService){
+  constructor(private sparePartsCart: SparePartsCartService, private sparePartsDataService: SparePartsDataService){
 
   }
   
-  ngOnInit(): void{}
+  ngOnInit(): void{
+    //this.sparePartsDataService.getAll().subscribe(spareParts => this.spareParts = spareParts);
+    console.log(this.spareParts);
+  }
 
   maxReached(m: string){
     alert(m);
