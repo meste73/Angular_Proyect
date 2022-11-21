@@ -11,6 +11,7 @@ import { GarageSparePartsComponent } from './garage-spare-parts/garage-spare-par
 import { GarageHomeComponent } from './garage-home/garage-home.component';
 import { GarageAboutComponent } from './garage-about/garage-about.component';
 import { GarageSpecialtyComponent } from './garage-specialty/garage-specialty.component';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { GarageSpecialtyComponent } from './garage-specialty/garage-specialty.co
     GarageSparePartsComponent,
     GarageHomeComponent,
     GarageAboutComponent,
-    GarageSpecialtyComponent
+    GarageSpecialtyComponent,
+    InputIntegerComponent
   ],
   imports: [
     BrowserModule,

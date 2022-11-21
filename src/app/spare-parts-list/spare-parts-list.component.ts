@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SparePart } from './spare-part';
 
 @Component({
@@ -6,7 +6,7 @@ import { SparePart } from './spare-part';
   templateUrl: './spare-parts-list.component.html',
   styleUrls: ['./spare-parts-list.component.scss']
 })
-export class SparePartsListComponent {
+export class SparePartsListComponent implements OnInit {
 
   spareParts: SparePart[] = [{
     name: "Engranaje 1ra z34",
@@ -60,19 +60,6 @@ export class SparePartsListComponent {
   }];
 
   constructor(){}
-
+  
   ngOnInit(): void{}
-
-  upQuantity(sparePart: SparePart): void{
-    if(sparePart.quantity < sparePart.stock){
-      sparePart.quantity++;
-    }
-  }
-
-  downQuantity(sparePart: SparePart): void{
-    if(sparePart.quantity > 0){
-      sparePart.quantity--;
-    }
-  }
-
 }
