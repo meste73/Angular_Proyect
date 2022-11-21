@@ -31,8 +31,8 @@
                 </span>
             </td>
             <td>
-                <app-input-integer [(quantity)]="sparePart.quantity" [limit]="sparePart.stock"></app-input-integer>
-                {{sparePart.quantity}}
+                <app-input-integer [(quantity)]="sparePart.quantity" [limit]="sparePart.stock" (maxReached)="maxReached($event)"></app-input-integer>
+                <button class="btn" (click)="addToCart(sparePart)">Agregar</button>
             </td>
         </tr>
     </tbody>

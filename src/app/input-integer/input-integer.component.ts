@@ -14,11 +14,14 @@ export class InputIntegerComponent implements OnInit{
   @Input() quantity!: number;
   @Input() limit!: number;
   @Output() quantityChange: EventEmitter<number> = new EventEmitter<number>();
+  @Output() maxReached: EventEmitter<string> = new EventEmitter<string>();
 
   upQuantity(limit: number): void{
-    if(this.quantity < this.limit){
+    if(this.quantity < limit){
       this.quantity++;
       this.quantityChange.emit(this.quantity);
+    } else{
+      this.maxReached.emit("Se alcanzo la cantidad maxima");
     }
   }
 
