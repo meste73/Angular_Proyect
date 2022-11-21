@@ -7,12 +7,20 @@ import { SparePartsListComponent } from './spare-parts-list/spare-parts-list.com
 import { SparePartsCartComponent } from './spare-parts-cart/spare-parts-cart.component';
 
 import { FormsModule } from '@angular/forms';
+import { GarageSparePartsComponent } from './garage-spare-parts/garage-spare-parts.component';
+import { GarageHomeComponent } from './garage-home/garage-home.component';
+import { GarageAboutComponent } from './garage-about/garage-about.component';
+import { GarageSpecialtyComponent } from './garage-specialty/garage-specialty.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SparePartsListComponent,
-    SparePartsCartComponent
+    SparePartsCartComponent,
+    GarageSparePartsComponent,
+    GarageHomeComponent,
+    GarageAboutComponent,
+    GarageSpecialtyComponent
   ],
   imports: [
     BrowserModule,
