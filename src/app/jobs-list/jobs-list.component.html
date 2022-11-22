@@ -1,0 +1,25 @@
+<table class="table table-secondary">
+    <thead class="table-dark">
+        <tr>
+            <th>Trabajo</th>
+            <th>Descripcion</th>
+            <th>Cliente</th>
+            <th>Numero de trabajo</th>
+            <th>Estado</th>
+            <th>Sector</th>
+            <th>Responsable</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let job of jobs">
+            <td>{{job.work_name}}</td>
+            <td>{{job.work_description}}</td>
+            <td>{{job.client_name}}</td>
+            <td>{{job.work_id}}</td>
+            <td>{{job.work_status}}</td>
+            <td>{{job.area}}</td>
+            <td>{{job.manager}}</td>
+        </tr>
+    </tbody>
+</table>
+<span>Consumo API de proyecto de WEB 2</span>

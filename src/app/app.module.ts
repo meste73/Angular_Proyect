@@ -13,6 +13,7 @@ import { GarageHomeComponent } from './garage-home/garage-home.component';
 import { GarageAboutComponent } from './garage-about/garage-about.component';
 import { GarageSpecialtyComponent } from './garage-specialty/garage-specialty.component';
 import { InputIntegerComponent } from './input-integer/input-integer.component';
+import { JobsListComponent } from './jobs-list/jobs-list.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { InputIntegerComponent } from './input-integer/input-integer.component';
     GarageHomeComponent,
     GarageAboutComponent,
     GarageSpecialtyComponent,
-    InputIntegerComponent
+    InputIntegerComponent,
+    JobsListComponent
   ],
   imports: [
     BrowserModule,
