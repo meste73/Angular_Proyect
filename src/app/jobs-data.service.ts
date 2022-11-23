@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Job } from './jobs-list/job';
 
-const URL = "http://localhost/Practicos/TPE/TPE-EZE-PARTE2/api/v1/jobs";
+const URL = "https://62b613cd6999cce2e8feb474.mockapi.io/jobs";
 
 @Injectable({
   providedIn: 'root'

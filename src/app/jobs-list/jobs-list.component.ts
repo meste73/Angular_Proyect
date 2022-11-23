@@ -15,8 +15,8 @@ export class JobsListComponent implements OnInit{
   constructor(private jobsDataService: JobsDataService){
 
   }
-  ngOnInit(): void {
-    this.jobsDataService.getAll().subscribe(jobs => this.jobs = jobs)
-  }
 
+  ngOnInit(): void {
+      this.jobsDataService.getAll().subscribe(jobs => this.jobs = jobs)
+  }
 }

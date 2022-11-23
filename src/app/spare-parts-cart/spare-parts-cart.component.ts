@@ -12,7 +12,6 @@ export class SparePartsCartComponent {
   spareParts: SparePart[] = [];
 
   constructor(private sparePartsCart: SparePartsCartService){
-    
     this.sparePartsCart._spareParts.subscribe(data => {
       this.spareParts = data;
     })
