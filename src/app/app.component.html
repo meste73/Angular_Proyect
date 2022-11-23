@@ -22,11 +22,11 @@
 <router-outlet></router-outlet>
 <footer class="py-3 my-4 bg-dark text-light">
   <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-    <li class="nav-item"><a href="home" class="nav-link px-2 text-light">Home</a></li>
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Facebook</a></li>
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Instagram</a></li>
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Twitter</a></li>
-    <li class="nav-item"><a href="about" class="nav-link px-2 text-light">Sobre Nosotros</a></li>
+    <li class="nav-item"><a [routerLink]="['/']" class="nav-link px-2 text-light">Home</a></li>
+    <li class="nav-item"><a class="nav-link px-2 text-light">Facebook</a></li>
+    <li class="nav-item"><a class="nav-link px-2 text-light">Instagram</a></li>
+    <li class="nav-item"><a class="nav-link px-2 text-light">Twitter</a></li>
+    <li class="nav-item"><a [routerLink]="['about']" class="nav-link px-2 text-light">Sobre Nosotros</a></li>
   </ul>
   <p class="text-center text-light">&copy; 2022 Mestelan Competicion, Inc</p>
 </footer>
