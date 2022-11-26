@@ -1,37 +1,36 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GarageHomeComponent} from './garage-home/garage-home.component'
-import { GarageSparePartsComponent} from './garage-spare-parts/garage-spare-parts.component'
-import { GarageAboutComponent} from './garage-about/garage-about.component'
-import { GarageSpecialtyComponent} from './garage-specialty/garage-specialty.component'
+import { GarageHomeComponent } from './garage-home/garage-home.component';
+import { GarageSparePartsComponent } from './garage-spare-parts/garage-spare-parts.component';
+import { GarageAboutComponent } from './garage-about/garage-about.component';
+import { GarageSpecialtyComponent } from './garage-specialty/garage-specialty.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'home',
-    component: GarageHomeComponent
+    component: GarageHomeComponent,
   },
   {
     path: 'specialty',
-    component: GarageSpecialtyComponent
+    component: GarageSpecialtyComponent,
   },
   {
     path: 'list',
-    component: GarageSparePartsComponent
+    component: GarageSparePartsComponent,
   },
   {
     path: 'about',
-    component: GarageAboutComponent
-  }
-
+    component: GarageAboutComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

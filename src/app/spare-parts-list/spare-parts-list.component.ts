@@ -5,76 +5,98 @@ import { SparePart } from './spare-part';
 @Component({
   selector: 'app-spare-parts-list',
   templateUrl: './spare-parts-list.component.html',
-  styleUrls: ['./spare-parts-list.component.scss']
+  styleUrls: ['./spare-parts-list.component.scss'],
 })
-
 export class SparePartsListComponent implements OnInit {
+  spareParts: SparePart[] = [];
 
-  spareParts: SparePart[] = [{
-    name: "Engranaje 1ra z34",
-    brand: "Gran Sasso",
-    amount: 22000,
-    stock: 10,
-    promotion: false,
-    quantity: 0
-  },{
-    name: "Engranaje 2da z29",
-    brand: "Gran Sasso",
-    amount: 23000,
-    stock: 0,
-    promotion: false,
-    quantity: 0
-  },{
-    name: "Engranaje 3da z28",
-    brand: "Gran Sasso",
-    amount: 21500,
-    stock: 10,
-    promotion: true,
-    quantity: 0
-  },{
-    name: "Directa IKA",
-    brand: "Gran Sasso",
-    amount: 28000,
-    stock: 10,
-    promotion: false,
-    quantity: 0
-  },{
-    name: "Directa Chev",
-    brand: "Gran Sasso",
-    amount: 28000,
-    stock: 10,
-    promotion: false,
-    quantity: 0
-  },{
-    name: "Quintuple 2.83",
-    brand: "Gran Sasso",
-    amount: 55000,
-    stock: 10,
-    promotion: false,
-    quantity: 0
-  },{
-    name: "Desplazable 3ra y 4ta",
-    brand: "Gran Sasso",
-    amount: 28000,
-    stock: 10,
-    promotion: true,
-    quantity: 0
-  }];
+  constructor(private sparePartsCart: SparePartsCartService) {}
 
-  constructor(private sparePartsCart: SparePartsCartService){
-
+  ngOnInit(): void {
+    this.spareParts = [
+      {
+        name: 'Engranaje 1ra z34',
+        brand: 'Gran Sasso',
+        amount: 22000,
+        stock: 10,
+        promotion: false,
+        quantity: 0,
+      },
+      {
+        name: 'Engranaje 2da z29',
+        brand: 'Gran Sasso',
+        amount: 23000,
+        stock: 0,
+        promotion: false,
+        quantity: 0,
+      },
+      {
+        name: 'Engranaje 3da z28',
+        brand: 'Gran Sasso',
+        amount: 21500,
+        stock: 10,
+        promotion: true,
+        quantity: 0,
+      },
+      {
+        name: 'Directa IKA',
+        brand: 'Gran Sasso',
+        amount: 28000,
+        stock: 10,
+        promotion: false,
+        quantity: 0,
+      },
+      {
+        name: 'Directa Chev',
+        brand: 'Gran Sasso',
+        amount: 28000,
+        stock: 10,
+        promotion: false,
+        quantity: 0,
+      },
+      {
+        name: 'Quintuple 2.83',
+        brand: 'Gran Sasso',
+        amount: 55000,
+        stock: 10,
+        promotion: false,
+        quantity: 0,
+      },
+      {
+        name: 'Desplazable 3ra y 4ta',
+        brand: 'Gran Sasso',
+        amount: 28000,
+        stock: 10,
+        promotion: true,
+        quantity: 0,
+      },
+    ];
+    this.checkingStock();
   }
-  
-  ngOnInit(): void{}
 
-  maxReached(m: string){
+  maxReached(m: string) {
     alert(m);
   }
 
-  addToCart(sparePart: SparePart): void{
+  addToCart(sparePart: SparePart): void {
     this.sparePartsCart.addToCart(sparePart);
     sparePart.stock -= sparePart.quantity;
     sparePart.quantity = 0;
   }
 
+  checkingStock() {
+    let auxSpareParts: SparePart[] = this.sparePartsCart.getSpareParts();
+    for (let i = 0; i < this.spareParts.length; i++) {
+      for (let j = 0; j < auxSpareParts.length; j++) {
+        if (this.spareParts[i].name == auxSpareParts[j].name) {
+          console.log(
+            this.spareParts[i].name,
+            this.spareParts[i].stock,
+            auxSpareParts[j].quantity
+          );
+          this.spareParts[i].stock -= auxSpareParts[j].quantity;
+        }
+      }
+    }
+  }
 }
