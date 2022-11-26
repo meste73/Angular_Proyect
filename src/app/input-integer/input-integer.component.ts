@@ -34,8 +34,8 @@ export class InputIntegerComponent implements OnInit{
   }
 
   changeQuantity(event: any): void{
+    console.log(event);
     if(event.key < "0" || event.key > "9"){
-      alert("Valor incorrecto");
       this.quantity = 0;
     } else if(this.quantity <= this.limit){
       this.quantity = Number(event.key);

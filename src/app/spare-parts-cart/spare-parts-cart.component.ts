@@ -10,10 +10,14 @@ import { SparePart } from '../spare-parts-list/spare-part';
 export class SparePartsCartComponent {
 
   spareParts: SparePart[] = [];
+  totalAmount: number = 0;
 
   constructor(private sparePartsCart: SparePartsCartService){
     this.sparePartsCart._spareParts.subscribe(data => {
       this.spareParts = data;
+    })
+    this.sparePartsCart._totalAmount.subscribe(data => {
+      this.totalAmount = data;
     })
   }
 }

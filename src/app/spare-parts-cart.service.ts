@@ -6,11 +6,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SparePartsCartService {
+
   private spareParts: SparePart[] = [];
-  sparePartsSubject: BehaviorSubject<SparePart[]> = new BehaviorSubject(
-    this.spareParts
-  );
+  private totalAmount: number = 0;
+
+  sparePartsSubject: BehaviorSubject<SparePart[]> = new BehaviorSubject(this.spareParts);
+  totalAmountSubject: BehaviorSubject<number> = new BehaviorSubject(this.totalAmount);
+
   _spareParts: Observable<SparePart[]> = this.sparePartsSubject.asObservable();
+  _totalAmount: Observable<number> = this.totalAmountSubject.asObservable();
 
   constructor() {}
 
@@ -24,9 +28,18 @@ export class SparePartsCartService {
       item.quantity += sparePart.quantity;
     }
     this.sparePartsSubject.next(this.spareParts);
+    this.updateTotalAmount();
   }
 
   public getSpareParts() {
     return this.spareParts;
+  }
+
+  updateTotalAmount(){
+    this.totalAmount = 0;
+    for(let i = 0; i<this.spareParts.length; i++){
+      this.totalAmount += this.spareParts[i].amount * this.spareParts[i].quantity;
+    }
+    this.totalAmountSubject.next(this.totalAmount);
   }
 }

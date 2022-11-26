@@ -89,11 +89,6 @@ export class SparePartsListComponent implements OnInit {
     for (let i = 0; i < this.spareParts.length; i++) {
       for (let j = 0; j < auxSpareParts.length; j++) {
         if (this.spareParts[i].name == auxSpareParts[j].name) {
-          console.log(
-            this.spareParts[i].name,
-            this.spareParts[i].stock,
-            auxSpareParts[j].quantity
-          );
           this.spareParts[i].stock -= auxSpareParts[j].quantity;
         }
       }
