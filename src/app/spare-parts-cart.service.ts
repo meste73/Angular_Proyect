@@ -18,7 +18,7 @@ export class SparePartsCartService {
 
   constructor() {}
 
-  addToCart(sparePart: SparePart) {
+  addToCart(sparePart: SparePart): void {
     let item: SparePart | undefined = this.spareParts.find(
       (v1) => v1.name == sparePart.name
     );
@@ -31,11 +31,11 @@ export class SparePartsCartService {
     this.updateTotalAmount();
   }
 
-  public getSpareParts() {
+  public getSpareParts(): SparePart[] {
     return this.spareParts;
   }
 
-  updateTotalAmount(){
+  updateTotalAmount(): void{
     this.totalAmount = 0;
     for(let i = 0; i<this.spareParts.length; i++){
       this.totalAmount += this.spareParts[i].amount * this.spareParts[i].quantity;

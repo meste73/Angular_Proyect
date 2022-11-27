@@ -35,12 +35,13 @@ export class InputIntegerComponent implements OnInit{
 
   changeQuantity(event: any): void{
     console.log(event);
-    if(event.key < "0" || event.key > "9"){
+    let acceptedValues = /^[0-9]+$/;
+    let value = event.key;
+    if((value.match(acceptedValues)) && (value < 0) && (value > 9)){
       this.quantity = 0;
-    } else if(this.quantity <= this.limit){
+    }else if(this.quantity <= this.limit){
       this.quantity = Number(event.key);
       this.quantityChange.emit(this.quantity);
     }
   }
-
 }
