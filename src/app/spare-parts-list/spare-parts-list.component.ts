@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SparePartsCartService } from '../spare-parts-cart.service';
 import { SparePart } from './spare-part';
 
@@ -8,69 +8,13 @@ import { SparePart } from './spare-part';
   styleUrls: ['./spare-parts-list.component.scss'],
 })
 export class SparePartsListComponent implements OnInit {
-  spareParts: SparePart[] = [];
+  
 
   constructor(private sparePartsCart: SparePartsCartService) {}
 
+  @Input() spareParts!: SparePart[];
+  
   ngOnInit(): void {
-    this.spareParts = [
-      {
-        name: 'Engranaje 1ra z34',
-        brand: 'Gran Sasso',
-        amount: 22000,
-        stock: 10,
-        promotion: false,
-        quantity: 0,
-      },
-      {
-        name: 'Engranaje 2da z29',
-        brand: 'Gran Sasso',
-        amount: 23000,
-        stock: 0,
-        promotion: false,
-        quantity: 0,
-      },
-      {
-        name: 'Engranaje 3da z28',
-        brand: 'Gran Sasso',
-        amount: 21500,
-        stock: 10,
-        promotion: true,
-        quantity: 0,
-      },
-      {
-        name: 'Directa IKA',
-        brand: 'Gran Sasso',
-        amount: 28000,
-        stock: 10,
-        promotion: false,
-        quantity: 0,
-      },
-      {
-        name: 'Directa Chev',
-        brand: 'Gran Sasso',
-        amount: 28000,
-        stock: 10,
-        promotion: false,
-        quantity: 0,
-      },
-      {
-        name: 'Quintuple 2.83',
-        brand: 'Gran Sasso',
-        amount: 55000,
-        stock: 10,
-        promotion: false,
-        quantity: 0,
-      },
-      {
-        name: 'Desplazable 3ra y 4ta',
-        brand: 'Gran Sasso',
-        amount: 28000,
-        stock: 10,
-        promotion: true,
-        quantity: 0,
-      },
-    ];
     this.checkingStock();
   }
 

@@ -22,13 +22,15 @@ export class SparePartsCartService {
     let item: SparePart | undefined = this.spareParts.find(
       (v1) => v1.name == sparePart.name
     );
-    if (!item) {
-      this.spareParts.push({ ...sparePart });
-    } else {
-      item.quantity += sparePart.quantity;
+    if(sparePart.quantity != 0){
+      if (item)
+        item.quantity += sparePart.quantity;
+      else if(!item)
+        this.spareParts.push({...sparePart})
+      
+      this.sparePartsSubject.next(this.spareParts);
+      this.updateTotalAmount();
     }
-    this.sparePartsSubject.next(this.spareParts);
-    this.updateTotalAmount();
   }
 
   public getSpareParts(): SparePart[] {
@@ -41,5 +43,11 @@ export class SparePartsCartService {
       this.totalAmount += this.spareParts[i].amount * this.spareParts[i].quantity;
     }
     this.totalAmountSubject.next(this.totalAmount);
+  }
+
+  emptyCart(){
+    this.spareParts = [];
+    this.sparePartsSubject.next(this.spareParts);
+    this.updateTotalAmount();
   }
 }
