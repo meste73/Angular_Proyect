@@ -5,7 +5,7 @@
       </div>
       <div class="col-4">
         <app-spare-parts-cart></app-spare-parts-cart>
-        <button (click)="emptyCart()" class="btn btn-sm btn-danger">Vaciar carrito</button>
+        <button (click)="emptyCart()" class="btn btn-sm btn-danger" *ngIf="serviceArraySize() > 0">Vaciar carrito</button>
       </div>
     </div>
   </div>

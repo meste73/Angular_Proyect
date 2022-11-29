@@ -34,7 +34,6 @@ export class InputIntegerComponent implements OnInit{
   }
 
   changeQuantity(event: any): void{
-    console.log(event);
     let acceptedValues = /^[0-9]+$/;
     let value = event.key;
     if((value.match(acceptedValues)) && (this.quantity <= this.limit) &&(this.quantity != 0)){

@@ -16,19 +16,23 @@
             <td [ngClass]="{'promotion' : sparePart.promotion}">
                 {{sparePart.brand}}
             </td>
-            <td *ngIf="sparePart.promotion == true" [ngClass]="{'promotion' : sparePart.promotion}">
+            <td *ngIf="sparePart.promotion == true; else noPromotion" [ngClass]="{'promotion' : sparePart.promotion}">
                 {{sparePart.amount*0.8 | currency}}
             </td>
-            <td *ngIf="sparePart.promotion == false" [ngClass]="{'promotion' : sparePart.promotion}">
-                {{sparePart.amount | currency}}
-            </td>
+            <ng-template #noPromotion>
+                <td [ngClass]="{'promotion' : sparePart.promotion}">
+                    {{sparePart.amount | currency}}
+                </td>
+            </ng-template>
             <td>
-                <span *ngIf="sparePart.stock == 0" class="badge bg-danger ms-2 mt-2">
+                <span *ngIf="sparePart.stock == 0; else noStock" class="badge bg-danger ms-2 mt-2">
                     SIN STOCK
                 </span>
-                <span *ngIf="sparePart.stock != 0" [ngClass]="{'promotion' : sparePart.promotion}">
-                    {{sparePart.stock}}
-                </span>
+                <ng-template #noStock>
+                    <span [ngClass]="{'promotion' : sparePart.promotion}">
+                        {{sparePart.stock}}
+                    </span>
+                </ng-template>
             </td>
             <td class="d-flex gap-2">
                 <app-input-integer [(quantity)]="sparePart.quantity" [limit]="sparePart.stock" (maxReached)="maxReached($event)"></app-input-integer>

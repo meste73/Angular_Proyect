@@ -45,9 +45,14 @@ export class SparePartsCartService {
     this.totalAmountSubject.next(this.totalAmount);
   }
 
-  emptyCart(){
+  emptyCart(): void{
     this.spareParts = [];
     this.sparePartsSubject.next(this.spareParts);
     this.updateTotalAmount();
   }
+
+  arraySize(): number{
+    return this.spareParts.length;
+  }
+
 }

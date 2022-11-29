@@ -2,13 +2,13 @@
     <h3>Carrito de compras</h3>
     <ul>
         <li *ngFor="let s of spareParts">
-            <span *ngIf="s.quantity != 0">
+            <span *ngIf="s.quantity != 0; else sinStock">
                 {{s.name}}: {{s.quantity}}
             </span>
-            <span *ngIf="s.quantity == 0">
+            <ng-template #sinStock>
                 {{s.name}}: Sin stock
-            </span>
+            </ng-template>
         </li>
     </ul>
-    <span>Monto total: {{totalAmount | currency}}</span>
+    <span *ngIf="spareParts.length > 0">Monto total: {{totalAmount | currency}}</span>
 </div>
