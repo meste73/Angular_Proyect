@@ -14,9 +14,7 @@ export class SparePartsListComponent implements OnInit {
 
   @Input() spareParts!: SparePart[];
   
-  ngOnInit(): void {
-    this.checkingStock();
-  }
+  ngOnInit(): void {}
 
   maxReached(m: string) {
     alert(m);
@@ -28,14 +26,5 @@ export class SparePartsListComponent implements OnInit {
     sparePart.quantity = 0;
   }
 
-  checkingStock(): void {
-    let auxSpareParts: SparePart[] = this.sparePartsCart.getSpareParts();
-    for (let i = 0; i < this.spareParts.length; i++) {
-      for (let j = 0; j < auxSpareParts.length; j++) {
-        if (this.spareParts[i].name == auxSpareParts[j].name) {
-          this.spareParts[i].stock -= auxSpareParts[j].quantity;
-        }
-      }
-    }
-  }
+  
 }

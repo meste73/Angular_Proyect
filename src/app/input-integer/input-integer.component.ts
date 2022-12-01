@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { SparePart } from '../spare-parts-list/spare-part';
+
 
 @Component({
   selector: 'app-input-integer',

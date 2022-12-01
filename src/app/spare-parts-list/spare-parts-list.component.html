@@ -35,8 +35,14 @@
                 </ng-template>
             </td>
             <td class="d-flex gap-2">
-                <app-input-integer [(quantity)]="sparePart.quantity" [limit]="sparePart.stock" (maxReached)="maxReached($event)"></app-input-integer>
-                <button class="btn btn-danger btn-sm" (click)="addToCart(sparePart)">Agregar</button>
+                <app-input-integer 
+                    [(quantity)]="sparePart.quantity" 
+                    [limit]="sparePart.stock" 
+                    (maxReached)="maxReached($event)"
+                ></app-input-integer>
+                <button class="btn btn-danger btn-sm" 
+                    (click)="addToCart(sparePart)"
+                >Agregar</button>
             </td>
         </tr>
     </tbody>
