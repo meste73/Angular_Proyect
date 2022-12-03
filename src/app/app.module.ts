@@ -8,11 +8,12 @@ import { AppComponent } from './app.component';
 import { GarageSparePartsComponent } from './garage-spare-parts/garage-spare-parts.component';
 import { GarageHomeComponent } from './garage-home/garage-home.component';
 import { GarageAboutComponent } from './garage-about/garage-about.component';
-import { GarageSpecialtyComponent } from './garage-specialty/garage-specialty.component';
+import { GarageJobsComponent } from './garage-jobs/garage-jobs.component';
 import { InputIntegerComponent } from './input-integer/input-integer.component';
 import { JobsListComponent } from './jobs-list/jobs-list.component';
 import { SparePartsListComponent } from './spare-parts-list/spare-parts-list.component';
 import { SparePartsCartComponent } from './spare-parts-cart/spare-parts-cart.component';
+import { JobsFormComponent } from './jobs-form/jobs-form.component';
 
 
 @NgModule({
@@ -21,11 +22,12 @@ import { SparePartsCartComponent } from './spare-parts-cart/spare-parts-cart.com
     GarageSparePartsComponent,
     GarageHomeComponent,
     GarageAboutComponent,
-    GarageSpecialtyComponent,
+    GarageJobsComponent,
     InputIntegerComponent,
     JobsListComponent,
     SparePartsListComponent,
-    SparePartsCartComponent
+    SparePartsCartComponent,
+    JobsFormComponent
   ],
   imports: [
     AppRoutingModule,

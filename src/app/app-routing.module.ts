@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { GarageHomeComponent } from './garage-home/garage-home.component';
 import { GarageSparePartsComponent } from './garage-spare-parts/garage-spare-parts.component';
 import { GarageAboutComponent } from './garage-about/garage-about.component';
-import { GarageSpecialtyComponent } from './garage-specialty/garage-specialty.component';
+import { GarageJobsComponent } from './garage-jobs/garage-jobs.component';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'specialty',
-    component: GarageSpecialtyComponent,
+    component: GarageJobsComponent,
   },
   {
     path: 'list',
@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     path: 'about',
     component: GarageAboutComponent,
-  },
+  }
 ];
 
 @NgModule({

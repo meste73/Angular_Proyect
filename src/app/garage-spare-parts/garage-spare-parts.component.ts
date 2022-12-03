@@ -1,3 +1,4 @@
+import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs';
 import { SparePartsCartService } from '../spare-parts-cart.service';
@@ -9,16 +10,17 @@ import { SparePart } from '../spare-parts-list/spare-part';
   templateUrl: './garage-spare-parts.component.html',
   styleUrls: ['./garage-spare-parts.component.scss']
 })
+
 export class GarageSparePartsComponent implements OnInit {
 
-  constructor(private sparePartsCart: SparePartsCartService, private sparePartsList: SparePartsListService){}
+  spareParts!: SparePart[];
 
-  spareParts: SparePart[] = [];
+  constructor(private sparePartsCart: SparePartsCartService, private sparePartsList: SparePartsListService){}
 
   ngOnInit(): void {
     this.sparePartsList.getAll()
         .pipe(finalize(() => this.checkingStock()))
-        .subscribe(_spareParts => this.spareParts = _spareParts);
+        .subscribe(data => this.spareParts = data);
   }
 
   emptyCart(){
@@ -33,11 +35,11 @@ export class GarageSparePartsComponent implements OnInit {
   checkingStock(): void {
     let auxSpareParts: SparePart[] = this.sparePartsCart.getSpareParts();
     for (let i = 0; i < this.spareParts.length; i++) {
-      for (let j = 0; j < auxSpareParts.length; j++) {
-        if (this.spareParts[i].name == auxSpareParts[j].name) {
-          this.spareParts[i].stock -= auxSpareParts[j].quantity;
-        }
-      }
+      let sparePart: SparePart | undefined = this.spareParts.find(
+        (sp) => sp.name == auxSpareParts[i].name
+      );
+      if(sparePart && sparePart.name ==  auxSpareParts[i].name)
+        sparePart.stock -= auxSpareParts[i].quantity;
     }
   }
 }

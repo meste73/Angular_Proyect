@@ -12,12 +12,21 @@ export class JobsListComponent implements OnInit{
 
   jobs: Job[] = [];
 
-  constructor(private jobsDataService: JobsDataService){
-
-  }
+  constructor(private jobsDataService: JobsDataService){}
 
   ngOnInit(): void {
-      this.jobsDataService.getAll()
-          .subscribe(jobs => this.jobs = jobs)
+      this.getJobs();
+  }
+
+  getJobs(){
+    this.jobsDataService.getAll().subscribe(data => this.jobs = data);
+  }
+
+  put(id: number){
+    this.jobsDataService.put(id);
+  }
+
+  delete(id: number){
+    this.jobsDataService.delete(id);
   }
 }

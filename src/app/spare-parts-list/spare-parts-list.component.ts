@@ -7,13 +7,13 @@ import { SparePart } from './spare-part';
   templateUrl: './spare-parts-list.component.html',
   styleUrls: ['./spare-parts-list.component.scss'],
 })
-export class SparePartsListComponent implements OnInit {
-  
+
+export class SparePartsListComponent implements OnInit {  
+
+  @Input() spareParts!: SparePart[];
 
   constructor(private sparePartsCart: SparePartsCartService) {}
 
-  @Input() spareParts!: SparePart[];
-  
   ngOnInit(): void {}
 
   maxReached(m: string) {
@@ -25,6 +25,4 @@ export class SparePartsListComponent implements OnInit {
     sparePart.stock -= sparePart.quantity;
     sparePart.quantity = 0;
   }
-
-  
 }

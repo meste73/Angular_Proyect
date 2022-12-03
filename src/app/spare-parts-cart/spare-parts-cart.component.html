@@ -1,7 +1,7 @@
 <div>
     <h3>Carrito de compras</h3>
     <ul>
-        <li *ngFor="let s of spareParts">
+        <li *ngFor="let s of spareParts$ | async">
             <span *ngIf="s.quantity != 0; else sinStock">
                 {{s.name}}: {{s.quantity}}
             </span>
@@ -10,5 +10,5 @@
             </ng-template>
         </li>
     </ul>
-    <span *ngIf="spareParts.length > 0">Monto total: {{totalAmount | currency}}</span>
+    <span *ngIf="totalAmount > 0">Monto total: {{totalAmount | currency}}</span>
 </div>

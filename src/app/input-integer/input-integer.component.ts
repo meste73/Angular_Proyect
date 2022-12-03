@@ -6,16 +6,17 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './input-integer.component.html',
   styleUrls: ['./input-integer.component.scss']
 })
+
 export class InputIntegerComponent implements OnInit{
-
-  constructor() {}
-
-  ngOnInit(): void{}
-
+  
   @Input() quantity!: number;
   @Input() limit!: number;
   @Output() quantityChange: EventEmitter<number> = new EventEmitter<number>();
   @Output() maxReached: EventEmitter<string> = new EventEmitter<string>();
+
+  constructor() {}
+
+  ngOnInit(): void{}
 
   upQuantity(limit: number): void{
     if(this.quantity < limit){
