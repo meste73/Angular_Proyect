@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { JobsDataService } from '../jobs-data.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Job } from './job';
 
 @Component({
@@ -8,25 +8,19 @@ import { Job } from './job';
   styleUrls: ['./jobs-list.component.scss']
 })
 
-export class JobsListComponent implements OnInit{
+export class JobsListComponent{
 
-  jobs: Job[] = [];
+  @Input() jobs!: Observable<Job[]>;
+  @Output() delete:EventEmitter<number> = new EventEmitter<number>();
+  @Output() put1stStep:EventEmitter<Job> = new EventEmitter<Job>();
 
-  constructor(private jobsDataService: JobsDataService){}
+  constructor(){}
 
-  ngOnInit(): void {
-      this.getJobs();
+  modify(job: Job){
+    this.put1stStep.emit(job);
   }
 
-  getJobs(){
-    this.jobsDataService.getAll().subscribe(data => this.jobs = data);
-  }
-
-  put(id: number){
-    this.jobsDataService.put(id);
-  }
-
-  delete(id: number){
-    this.jobsDataService.delete(id);
+  deleteJob(id: number){
+    this.delete.emit(id);
   }
 }

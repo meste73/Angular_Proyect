@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { JobsDataService } from '../jobs-data.service';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
 import { Job } from '../jobs-list/job';
 
 
@@ -9,7 +8,13 @@ import { Job } from '../jobs-list/job';
   styleUrls: ['./jobs-form.component.scss']
 })
 
+
 export class JobsFormComponent{
+  
+  @Output() add:EventEmitter<Job> = new EventEmitter<Job>();
+  @Output() put:EventEmitter<Job> = new EventEmitter<Job>();
+  @Input() addForm!:boolean;
+  @Input() putForm!:boolean;
 
   work_name!: string;
   work_description!: string;
@@ -19,9 +24,11 @@ export class JobsFormComponent{
   area!: string;
   send: boolean = false;
 
-  constructor(private jobsDataService: JobsDataService){}
+  constructor(){
+    
+  }
 
-  add(){
+  addJob(){
     let job: Job = {
       id: 0,
       work_name: this.work_name,
@@ -32,7 +39,22 @@ export class JobsFormComponent{
       area: this.area,
       manager: ''
     }
-    this.jobsDataService.post(job);
+    console.log(job);
+    this.add.emit(job);
+  }
+
+  putJob(){
+    let job: Job = {
+      id: 0,
+      work_name: this.work_name,
+      work_description: this.work_description,
+      client_name: this.client_name,
+      work_id: this.work_id,
+      work_status: this.work_status,
+      area: this.area,
+      manager: ''
+    }
+    this.put.emit(job);
   }
 
   check(){

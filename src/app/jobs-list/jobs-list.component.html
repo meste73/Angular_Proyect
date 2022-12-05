@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let job of jobs">
+        <tr *ngFor="let job of jobs | async">
             <td>{{job.work_name}}</td>
             <td>{{job.work_description}}</td>
             <td>{{job.client_name}}</td>
@@ -20,14 +20,10 @@
             <td>{{job.area}}</td>
             <td>{{job.manager}}</td>
             <div class="d-flex gap-1">
-                <button type="button" class="btn btn-dark btn-sm" (click)="put(job.id)">Modify</button>
-                <button type="button" class="btn btn-danger btn-sm" (click)="delete(job.id)">Delete</button>
+                <button type="button" class="btn btn-dark btn-sm" (click)="modify(job)">Modify</button>
+                <button type="button" class="btn btn-danger btn-sm" (click)="deleteJob(job.id)">Delete</button>
             </div>
         </tr>
     </tbody>
 </table>
 <span>*Consumo API de mockAPI*</span>
-<div class="container form-add mt-3 bg-dark p-3 rounded-1">
-    <h3 class="text-white">Agregar trabajo</h3>
-    <app-jobs-form></app-jobs-form>
-</div>
