@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Job } from '../jobs-list/job';
 
 
@@ -9,12 +10,13 @@ import { Job } from '../jobs-list/job';
 })
 
 
-export class JobsFormComponent{
+export class JobsFormComponent implements OnInit{
   
   @Output() add:EventEmitter<Job> = new EventEmitter<Job>();
   @Output() put:EventEmitter<Job> = new EventEmitter<Job>();
   @Input() addForm!:boolean;
-  @Input() putForm!:boolean;
+  @Input() title!:string;
+  @Input() job!:Job;
 
   work_name!: string;
   work_description!: string;
@@ -22,10 +24,23 @@ export class JobsFormComponent{
   work_id!: number;
   work_status!: string;
   area!: string;
-  send: boolean = false;
 
-  constructor(){
-    
+  constructor(){}
+
+  ngOnInit(): void {
+    this.work_name = this.job.work_name;
+    this.work_description = this.job.work_description;
+    this.client_name = this.job.client_name;
+    this.work_id = this.job.work_id;
+    this.work_status = this.job.work_status;
+    this.area = this.job.area;
+  }
+
+  sendJob(){
+    if(this.addForm)
+      this.addJob();
+    else
+      this.putJob();
   }
 
   addJob(){
@@ -55,18 +70,5 @@ export class JobsFormComponent{
       manager: ''
     }
     this.put.emit(job);
-  }
-
-  check(){
-    if(this.work_name &&
-      this.work_description &&
-      this.client_name &&
-      this.work_id &&
-      this.work_status &&
-      this.area){
-       this.send = true; 
-   } else {
-     alert("Ingrese los valores");
-   }
   }
 }

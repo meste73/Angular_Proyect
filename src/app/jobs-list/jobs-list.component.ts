@@ -13,11 +13,13 @@ export class JobsListComponent{
   @Input() jobs!: Observable<Job[]>;
   @Output() delete:EventEmitter<number> = new EventEmitter<number>();
   @Output() put1stStep:EventEmitter<Job> = new EventEmitter<Job>();
+  @Output() job:EventEmitter<Job> = new EventEmitter<Job>();
 
   constructor(){}
 
   modify(job: Job){
     this.put1stStep.emit(job);
+    this.job.emit(job);
   }
 
   deleteJob(id: number){

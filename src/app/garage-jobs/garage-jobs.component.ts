@@ -16,19 +16,28 @@ export class GarageJobsComponent implements OnInit {
 
   jobs!:Observable<Job[]>;
   job!:Job;
+  title!:string;
   addForm!: boolean;
-  putForm!: boolean;
 
   constructor(private jobsDataService: JobsDataService, private http: HttpClient){}
 
   ngOnInit(): void {
     this.jobs = this.jobsDataService.getAll();
+    this.title = "Agregar trabajo";
     this.addForm = true;
-    this.putForm = false;
+    this.job = {
+      id: 0,
+      work_name: "",
+      work_description: "",
+      client_name: "",
+      work_id: 0,
+      work_status: "",
+      area: "",
+      manager: ""
+    }
   }
 
   add(job: Job){
-    console.log(job);
     this.jobsDataService.setManager(job);
     this.http.post<Job>(URL, job)
              .pipe(finalize(() => this.ngOnInit()))    
@@ -42,16 +51,14 @@ export class GarageJobsComponent implements OnInit {
   }
 
   put1stStep(job: Job){
-    console.table(job);
+    this.title = "Modificar trabajo";
     this.job = job;
     this.addForm = false;
-    this.putForm = true;
   }
 
   put(job: Job){
     this.jobsDataService.setManager(job);
     let urlPut = URL + "/" + this.job.id;
-    console.log(urlPut);
     this.http.put<Job>(urlPut, job)
              .pipe(finalize(() => this.ngOnInit()))    
              .subscribe( response => console.log(response));

@@ -19,9 +19,9 @@ export class JobsDataService {
 
   setManager(job: Job): void{
     switch(job.area){
-      case 'cajas': job.manager = 'Ezequiel Mestelan';
+      case 'Cajas': job.manager = 'Ezequiel Mestelan';
       break;
-      case 'torneria': job.manager = 'Daniel Mestelan';
+      case 'Torneria': job.manager = 'Daniel Mestelan';
       break;
       default: job.manager = 'error';
     }
