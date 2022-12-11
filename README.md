@@ -1,20 +1,19 @@
 # Correccion de codigo
 
-## Organizacion
-
-    Quiero saber todo lo relacionado a como organizar los componentes.
-
 ## Servicios
 
-    Verificar funcionalidad de servicios
+    Saque funciones del servicio de trabajos, y las lleve al componente de trabajo para mejor utilidad.
 
 ## Garage-spare-parts ( carrito de compras )
 
-    Todavia no esta terminado
+    Todavia no esta terminado (Queda pendiente la funcionalidad de finalizar la compra)
 
 ## Garage-Jobs
 
-    Dentro de esa seccion, esta la lista que traigo de mockapi.
-    El post funciona pero no se como hacer para que actualice la lista sin actualizar.
-    El delete no borra.
-    El put no llegue a desarrollarlo.
+    Actualizado.
+    Funcionan get, post, put y delete.
+    Ya no utilizo la funcion check(), ahora uso la validacion con ngForm.
+    
+## PD
+
+    Restan hacer los otros puntos marcados.
