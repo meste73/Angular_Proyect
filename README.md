@@ -1,19 +1,20 @@
 # Correccion de codigo
 
-## Servicios
-
-    Saque funciones del servicio de trabajos, y las lleve al componente de trabajo para mejor utilidad.
+    Correcciones a realizar:
 
 ## Garage-spare-parts ( carrito de compras )
 
-    Todavia no esta terminado (Queda pendiente la funcionalidad de finalizar la compra)
+    Agregar funcion comprar ( las misma debe modificar la api ).
 
 ## Garage-Jobs
 
-    Actualizado.
-    Funcionan get, post, put y delete.
-    Ya no utilizo la funcion check(), ahora uso la validacion con ngForm.
+    Agregar funcionalidad para mostrar un trabajo detallado al clickear en su nombre.
+    Agregar autenticacion de admin para ABM.
+    Llevar forms a una nueva seccion ( Admin ).
     
-## PD
+## PD ( investigar )
 
-    Restan hacer los otros puntos marcados.
+    Internacionalization.
+    Tailwind css.
+    Angular Material.
+    RxJS (pipe, map, filter, reduce).

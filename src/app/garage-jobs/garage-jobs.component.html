@@ -1,8 +1,10 @@
-<div class="container mt-3">
-    <h3>Trabajos</h3>
+<div class="container">
+    <div class="d-flex justify-content-center p-3 bg-dark text-light mt-1 mb-1 rounded-2">
+        <h2>Nuestros trabajos</h2>
+    </div>
     <app-jobs-list [jobs]="jobs" (delete)="delete($event)" (put1stStep)="put1stStep($event)"></app-jobs-list>
-    <div class="form-container mt-3 rounded-1">
-        <div class="form-add bg-dark p-3">
+    <div class="form-container mt-3">
+        <div class="form-add bg-dark p-3 rounded-1">
             <app-jobs-form *ngIf="addForm; else modifyForm" [job]="job" [title]="title" [addForm]="addForm" (add)="add($event)" (put)="put($event)"></app-jobs-form>
             <ng-template #modifyForm>
                 <app-jobs-form [job]="job" [title]="title" [addForm]="addForm" (add)="add($event)" (put)="put($event)" (putCancel)="putCancel($event)"></app-jobs-form>

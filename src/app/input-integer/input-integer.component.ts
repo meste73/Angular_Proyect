@@ -38,7 +38,7 @@ export class InputIntegerComponent implements OnInit{
     let acceptedValues = /^[0-9]+$/;
     let value = event.key;
     if((value.match(acceptedValues)) && (this.quantity <= this.limit) &&(this.quantity != 0)){
-      this.quantity = Number(event.key);
+      this.quantity = +event.key;
       this.quantityChange.emit(this.quantity);
     }else {
       this.quantity = 0;

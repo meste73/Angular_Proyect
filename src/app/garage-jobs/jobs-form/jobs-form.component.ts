@@ -73,7 +73,6 @@ export class JobsFormComponent implements OnInit{
   }
 
   cancelModify(){
-    console.log("form");
     this.putCancel.emit("Modificacion cancelada");
   }
 }

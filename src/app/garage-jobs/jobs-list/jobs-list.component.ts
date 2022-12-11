@@ -25,4 +25,8 @@ export class JobsListComponent{
   deleteJob(id: number){
     this.delete.emit(id);
   }
+
+  showInfo(msj: string){
+    alert(msj);
+  }
 }
