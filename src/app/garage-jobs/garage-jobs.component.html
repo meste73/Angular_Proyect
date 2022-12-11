@@ -5,7 +5,7 @@
         <div class="form-add bg-dark p-3">
             <app-jobs-form *ngIf="addForm; else modifyForm" [job]="job" [title]="title" [addForm]="addForm" (add)="add($event)" (put)="put($event)"></app-jobs-form>
             <ng-template #modifyForm>
-                <app-jobs-form [job]="job" [title]="title" [addForm]="addForm" (add)="add($event)" (put)="put($event)"></app-jobs-form>
+                <app-jobs-form [job]="job" [title]="title" [addForm]="addForm" (add)="add($event)" (put)="put($event)" (putCancel)="putCancel($event)"></app-jobs-form>
             </ng-template>
         </div>
     </div>

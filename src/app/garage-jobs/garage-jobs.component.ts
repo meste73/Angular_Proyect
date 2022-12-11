@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { finalize, Observable } from 'rxjs';
 import { JobsDataService } from '../jobs-data.service';
-import { Job } from '../jobs-list/job';
+import { Job } from '../garage-jobs/jobs-list/job';
 
 const URL = "https://62b613cd6999cce2e8feb474.mockapi.io/jobs";
 
@@ -62,5 +62,10 @@ export class GarageJobsComponent implements OnInit {
     this.http.put<Job>(urlPut, job)
              .pipe(finalize(() => this.ngOnInit()))    
              .subscribe( response => console.log(response));
+  }
+
+  putCancel(msj: string){
+    console.log(msj);
+    this.ngOnInit();
   }
 }

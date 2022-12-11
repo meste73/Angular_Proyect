@@ -10,10 +10,10 @@ import { GarageHomeComponent } from './garage-home/garage-home.component';
 import { GarageAboutComponent } from './garage-about/garage-about.component';
 import { GarageJobsComponent } from './garage-jobs/garage-jobs.component';
 import { InputIntegerComponent } from './input-integer/input-integer.component';
-import { JobsListComponent } from './jobs-list/jobs-list.component';
-import { SparePartsListComponent } from './spare-parts-list/spare-parts-list.component';
-import { SparePartsCartComponent } from './spare-parts-cart/spare-parts-cart.component';
-import { JobsFormComponent } from './jobs-form/jobs-form.component';
+import { JobsListComponent } from './garage-jobs/jobs-list/jobs-list.component';
+import { SparePartsListComponent } from './garage-spare-parts/spare-parts-list/spare-parts-list.component';
+import { SparePartsCartComponent } from './garage-spare-parts/spare-parts-cart/spare-parts-cart.component';
+import { JobsFormComponent } from './garage-jobs/jobs-form/jobs-form.component';
 
 
 @NgModule({

@@ -1,9 +1,8 @@
-import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs';
 import { SparePartsCartService } from '../spare-parts-cart.service';
 import { SparePartsListService } from '../spare-parts-list.service';
-import { SparePart } from '../spare-parts-list/spare-part';
+import { SparePart } from '../garage-spare-parts/spare-parts-list/spare-part';
 
 @Component({
   selector: 'app-garage-spare-parts',

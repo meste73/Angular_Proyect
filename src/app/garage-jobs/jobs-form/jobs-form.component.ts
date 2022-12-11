@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Job } from '../jobs-list/job';
 
 
@@ -14,6 +13,7 @@ export class JobsFormComponent implements OnInit{
   
   @Output() add:EventEmitter<Job> = new EventEmitter<Job>();
   @Output() put:EventEmitter<Job> = new EventEmitter<Job>();
+  @Output() putCancel:EventEmitter<string> = new EventEmitter<string>();
   @Input() addForm!:boolean;
   @Input() title!:string;
   @Input() job!:Job;
@@ -70,5 +70,10 @@ export class JobsFormComponent implements OnInit{
       manager: ''
     }
     this.put.emit(job);
+  }
+
+  cancelModify(){
+    console.log("form");
+    this.putCancel.emit("Modificacion cancelada");
   }
 }

@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { Observable } from 'rxjs';
-import { SparePartsCartService } from '../spare-parts-cart.service';
+import { SparePartsCartService } from '../../spare-parts-cart.service';
 import { SparePart } from '../spare-parts-list/spare-part';
 
 @Component({
