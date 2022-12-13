@@ -15,7 +15,7 @@ export class AdminService {
   login(user: string, password: string): void{
     if(this.user === user && this.password === password){
       sessionStorage.setItem('admin', 'logged');
-      this.router.navigate(['/']);
+      this.router.navigate(['/specialty']);
       
     } else {
       alert('Datos incorrectos');

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AdminService } from 'src/app/admin.service';
+import { AdminService } from '../../admin.service';
 import { Job } from './job';
 
 @Component({
