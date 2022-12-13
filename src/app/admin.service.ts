@@ -12,7 +12,7 @@ export class AdminService {
 
   constructor(private router: Router) {}
 
-  login(user: string, password: string){
+  login(user: string, password: string): void{
     if(this.user === user && this.password === password){
       sessionStorage.setItem('admin', 'logged');
       this.router.navigate(['/']);
@@ -22,7 +22,7 @@ export class AdminService {
     }
   }
 
-  checkLoggedIn(){
+  checkLoggedIn(): boolean{
     if(sessionStorage.getItem('admin')) 
       return true
     else 

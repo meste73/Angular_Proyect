@@ -14,9 +14,9 @@ export class SparePartsListComponent implements OnInit {
 
   constructor(private sparePartsCart: SparePartsCartService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void{}
 
-  maxReached(m: string) {
+  maxReached(m: string): void{
     alert(m);
   }
 

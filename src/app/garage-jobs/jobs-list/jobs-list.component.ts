@@ -18,20 +18,20 @@ export class JobsListComponent{
 
   constructor(private adminService: AdminService){}
 
-  modify(job: Job){
+  modify(job: Job): void{
     this.put1stStep.emit(job);
     this.job.emit(job);
   }
 
-  deleteJob(id: number){
+  deleteJob(id: number): void{
     this.delete.emit(id);
   }
 
-  showInfo(msj: string){
+  showInfo(msj: string): void{
     alert(msj);
   }
 
-  checkLoggedIn(){
+  checkLoggedIn(): boolean{
     return this.adminService.checkLoggedIn();
   }
 }

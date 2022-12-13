@@ -13,7 +13,7 @@ export class GarageAdminComponent {
 
   constructor(private adminService: AdminService){}
 
-  login(){
+  login():void{
     this.adminService.login(this.user, this.password);
     console.log(sessionStorage.getItem('admin'));
   }

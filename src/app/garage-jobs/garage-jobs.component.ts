@@ -40,26 +40,26 @@ export class GarageJobsComponent implements OnInit {
     }
   }
 
-  add(job: Job){
+  add(job: Job): void{
     this.jobsDataService.setManager(job);
     this.http.post<Job>(URL, job)
              .pipe(finalize(() => this.ngOnInit()))    
              .subscribe( response => console.log(response));
   }
 
-  delete(id: number){
+  delete(id: number): void{
     this.http.delete<Job>(URL + "/" + id)
              .pipe(finalize(() => this.ngOnInit()))
              .subscribe(response => console.log(response));
   }
 
-  put1stStep(job: Job){
+  put1stStep(job: Job): void{
     this.title = "Modificar trabajo";
     this.job = job;
     this.addForm = false;
   }
 
-  put(job: Job){
+  put(job: Job): void{
     this.jobsDataService.setManager(job);
     let urlPut = URL + "/" + this.job.id;
     this.http.put<Job>(urlPut, job)
@@ -67,12 +67,12 @@ export class GarageJobsComponent implements OnInit {
              .subscribe( response => console.log(response));
   }
 
-  putCancel(msj: string){
+  putCancel(msj: string): void{
     console.log(msj);
     this.ngOnInit();
   }
 
-  checkLoggedIn(){
+  checkLoggedIn(): boolean{
     return this.adminService.checkLoggedIn();
   }
 }

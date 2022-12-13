@@ -16,22 +16,22 @@ export class GarageSparePartsComponent implements OnInit {
 
   constructor(private sparePartsCart: SparePartsCartService, private sparePartsList: SparePartsListService){}
 
-  ngOnInit(): void {
+  ngOnInit(): void{
     this.sparePartsList.getAll()
         .pipe(finalize(() => this.checkingStock()))
         .subscribe(data => this.spareParts = data);
   }
 
-  emptyCart(){
+  emptyCart(): void{
     this.sparePartsCart.emptyCart();
     this.ngOnInit();
   }
 
-  serviceArraySize(){
+  serviceArraySize(): number{
     return this.sparePartsCart.arraySize();
   }
 
-  checkingStock(): void {
+  checkingStock(): void{
     let auxSpareParts: SparePart[] = this.sparePartsCart.getSpareParts();
     for (let i = 0; i < this.spareParts.length; i++) {
       let sparePart: SparePart | undefined = this.spareParts.find(

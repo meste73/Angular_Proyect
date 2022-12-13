@@ -36,14 +36,14 @@ export class JobsFormComponent implements OnInit{
     this.area = this.job.area;
   }
 
-  sendJob(){
+  sendJob(): void{
     if(this.addForm)
       this.addJob();
     else
       this.putJob();
   }
 
-  addJob(){
+  addJob(): void{
     let job: Job = {
       id: 0,
       work_name: this.work_name,
@@ -58,7 +58,7 @@ export class JobsFormComponent implements OnInit{
     this.add.emit(job);
   }
 
-  putJob(){
+  putJob(): void{
     let job: Job = {
       id: 0,
       work_name: this.work_name,
@@ -72,7 +72,7 @@ export class JobsFormComponent implements OnInit{
     this.put.emit(job);
   }
 
-  cancelModify(){
+  cancelModify(): void{
     this.putCancel.emit("Modificacion cancelada");
   }
 }

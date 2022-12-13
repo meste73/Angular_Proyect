@@ -19,7 +19,7 @@ export class SparePartsCartService {
 
   constructor() {}
 
-  addToCart(sparePart: SparePart): void {
+  addToCart(sparePart: SparePart): void{
     let item: SparePart | undefined = this._spareParts.find(
       (sp) => sp.name == sparePart.name
     );
@@ -34,7 +34,7 @@ export class SparePartsCartService {
     }
   }
 
-  public getSpareParts(): SparePart[] {
+  public getSpareParts(): SparePart[]{
     return this._spareParts;
   }
 
