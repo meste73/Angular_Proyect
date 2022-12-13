@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AdminService } from 'src/app/admin.service';
 import { Job } from './job';
 
 @Component({
@@ -15,7 +16,7 @@ export class JobsListComponent{
   @Output() put1stStep:EventEmitter<Job> = new EventEmitter<Job>();
   @Output() job:EventEmitter<Job> = new EventEmitter<Job>();
 
-  constructor(){}
+  constructor(private adminService: AdminService){}
 
   modify(job: Job){
     this.put1stStep.emit(job);
@@ -28,5 +29,9 @@ export class JobsListComponent{
 
   showInfo(msj: string){
     alert(msj);
+  }
+
+  checkLoggedIn(){
+    return this.adminService.checkLoggedIn();
   }
 }

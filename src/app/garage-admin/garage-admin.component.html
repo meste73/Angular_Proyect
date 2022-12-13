@@ -1,0 +1,32 @@
+<div class="form-container mt-2">
+    <div class="form-add bg-dark p-3 rounded-1">
+        <h1 class="text-white h3 mb-3 font-weight-normal">Seccion administrador</h1>
+        <form class="form-signin" #f="ngForm" (ngSubmit)="f.form.valid && login()">
+            <div class="form-group">
+                <label for="inputEmail" class="text-white">Usuario</label>
+                <input 
+                    type="email" 
+                    name="user"
+                    [(ngModel)]="user" 
+                    class="form-control" 
+                    placeholder="Ingrese usuario" 
+                    required
+                    >
+            </div>
+            <div>
+                <label for="inputPassword" class="text-white">Contraseña</label>
+                <input 
+                    type="password" 
+                    name="password"
+                    [(ngModel)]="password" 
+                    class="form-control" 
+                    placeholder="Ingrese contraseña" 
+                    required
+                    >
+            </div>
+            <div class="mt-2">
+                <button class="btn btn-success btn-sm" type="submit">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</div>

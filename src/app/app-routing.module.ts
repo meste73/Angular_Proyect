@@ -4,6 +4,7 @@ import { GarageHomeComponent } from './garage-home/garage-home.component';
 import { GarageSparePartsComponent } from './garage-spare-parts/garage-spare-parts.component';
 import { GarageAboutComponent } from './garage-about/garage-about.component';
 import { GarageJobsComponent } from './garage-jobs/garage-jobs.component';
+import { GarageAdminComponent } from './garage-admin/garage-admin.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'about',
     component: GarageAboutComponent,
+  },
+  {
+    path: 'admin',
+    component: GarageAdminComponent,
   }
 ];
 

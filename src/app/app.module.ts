@@ -14,6 +14,7 @@ import { JobsListComponent } from './garage-jobs/jobs-list/jobs-list.component';
 import { SparePartsListComponent } from './garage-spare-parts/spare-parts-list/spare-parts-list.component';
 import { SparePartsCartComponent } from './garage-spare-parts/spare-parts-cart/spare-parts-cart.component';
 import { JobsFormComponent } from './garage-jobs/jobs-form/jobs-form.component';
+import { GarageAdminComponent } from './garage-admin/garage-admin.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { JobsFormComponent } from './garage-jobs/jobs-form/jobs-form.component';
     JobsListComponent,
     SparePartsListComponent,
     SparePartsCartComponent,
-    JobsFormComponent
+    JobsFormComponent,
+    GarageAdminComponent
   ],
   imports: [
     AppRoutingModule,

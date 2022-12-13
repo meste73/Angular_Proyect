@@ -9,7 +9,6 @@
 ## Garage-Jobs
 
     Agregar funcionalidad para mostrar un trabajo detallado al clickear en su nombre.
-    Agregar autenticacion de admin para ABM.
     Llevar forms a una nueva seccion ( Admin ).
     
 ## PD ( investigar )
