@@ -25,4 +25,8 @@ export class GarageAdminComponent {
       this.router.navigate(['/']);
     }
   }
+
+  checkLoggedIn(): boolean{
+    return this.adminService.checkLoggedIn();
+  }
 }
