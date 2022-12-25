@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GarageHomeComponent } from './garage-home/garage-home.component';
-import { GarageSparePartsComponent } from './garage-spare-parts/garage-spare-parts.component';
-import { GarageAboutComponent } from './garage-about/garage-about.component';
-import { GarageJobsComponent } from './garage-jobs/garage-jobs.component';
-import { GarageAdminComponent } from './garage-admin/garage-admin.component';
+import { GarageHomeComponent } from './components/garage-home/garage-home.component';
+import { GarageSparePartsComponent } from './components/garage-spare-parts/garage-spare-parts.component';
+import { GarageAboutComponent } from './components/garage-about/garage-about.component';
+import { GarageJobsComponent } from './components/garage-jobs/garage-jobs.component';
+import { GarageLoginComponent } from './components/garage-login/garage-login.component';
 
 const routes: Routes = [
   {
@@ -29,8 +29,8 @@ const routes: Routes = [
     component: GarageAboutComponent,
   },
   {
-    path: 'admin',
-    component: GarageAdminComponent,
+    path: 'login',
+    component: GarageLoginComponent,
   }
 ];
 

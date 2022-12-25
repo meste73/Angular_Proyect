@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { finalize, Observable } from 'rxjs';
-import { JobsDataService } from '../jobs-data.service';
+import { JobsDataService } from '../../services/jobs-data.service';
 import { Job } from '../garage-jobs/jobs-list/job';
-import { AdminService } from '../admin.service';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 const URL = "https://62b613cd6999cce2e8feb474.mockapi.io/jobs";
 
@@ -22,7 +23,8 @@ export class GarageJobsComponent implements OnInit {
 
   constructor(private jobsDataService: JobsDataService, 
               private http: HttpClient,
-              private adminService: AdminService){}
+              private loginService: LoginService,
+              private router: Router){}
 
   ngOnInit(): void {
     this.jobs = this.jobsDataService.getAll();
@@ -70,9 +72,5 @@ export class GarageJobsComponent implements OnInit {
   putCancel(msj: string): void{
     console.log(msj);
     this.ngOnInit();
-  }
-
-  checkLoggedIn(): boolean{
-    return this.adminService.checkLoggedIn();
   }
 }

@@ -1,0 +1,11 @@
+<div class="container mt-5" *ngIf="checkLoggedIn()">
+  <div class="row">
+    <div class="col-8">
+      <app-spare-parts-list [spareParts]="spareParts"></app-spare-parts-list>
+    </div>
+    <div class="col-4">
+      <app-spare-parts-cart></app-spare-parts-cart>
+      <button (click)="emptyCart()" class="btn btn-sm btn-danger" *ngIf="serviceArraySize() > 0">Vaciar carrito</button>
+    </div>
+  </div>
+</div>

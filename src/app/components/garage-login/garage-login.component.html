@@ -1,4 +1,4 @@
-<div class="form-container mt-2">
+<div class="form-container mt-2" *ngIf="!checkLoggedIn()">
     <div class="form-add bg-dark p-3 rounded-1">
         <h1 class="text-white h3 mb-3 font-weight-normal">Seccion administrador</h1>
         <form class="form-signin" #f="ngForm" (ngSubmit)="f.form.valid && login()">
@@ -25,10 +25,7 @@
                     >
             </div>
             <div class="mt-2 form-group d-flex gap-1">
-                <button class="btn btn-success btn-sm" type="submit" *ngIf="!checkLoggedIn(); else e">Login</button>
-                <ng-template #e>
-                    <button class="btn btn-danger btn-sm" type="button" (click)="logout()">Logout</button>
-                </ng-template>     
+                <button class="btn btn-success btn-sm" type="submit" *ngIf="!checkLoggedIn()">Login</button>    
             </div>
         </form>
     </div>

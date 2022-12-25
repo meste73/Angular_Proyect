@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 
-export class AdminService {
+export class LoginService {
 
   private user: string = "elmeste.88@gmail.com";
   private password: string = "123456";
@@ -22,8 +22,15 @@ export class AdminService {
     }
   }
 
+  logout(): void{
+    if(sessionStorage.getItem('admin')){
+      sessionStorage.removeItem('admin');
+      this.router.navigate(['/']);
+    }
+  }
+
   checkLoggedIn(): boolean{
-    if(sessionStorage.getItem('admin')) 
+    if(sessionStorage.getItem('admin'))
       return true
     else 
       return false;

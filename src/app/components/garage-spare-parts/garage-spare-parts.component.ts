@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
-import { SparePartsCartService } from '../spare-parts-cart.service';
-import { SparePartsListService } from '../spare-parts-list.service';
+import { LoginService } from 'src/app/services/login.service';
+import { SparePartsCartService } from '../../services/spare-parts-cart.service';
+import { SparePartsListService } from '../../services/spare-parts-list.service';
 import { SparePart } from '../garage-spare-parts/spare-parts-list/spare-part';
 
 @Component({
@@ -14,7 +16,10 @@ export class GarageSparePartsComponent implements OnInit {
 
   spareParts!: SparePart[];
 
-  constructor(private sparePartsCart: SparePartsCartService, private sparePartsList: SparePartsListService){}
+  constructor(private sparePartsCart: SparePartsCartService, 
+              private sparePartsList: SparePartsListService,
+              private loginService: LoginService,
+              private router: Router){}
 
   ngOnInit(): void{
     this.sparePartsList.getAll()
@@ -40,5 +45,11 @@ export class GarageSparePartsComponent implements OnInit {
       if(sparePart && sparePart.name ==  auxSpareParts[i].name)
         sparePart.stock -= auxSpareParts[i].quantity;
     }
+  }
+
+  checkLoggedIn(): boolean{
+    if(!this.loginService.checkLoggedIn())
+      this.router.navigate(['login']);
+    return true;
   }
 }
