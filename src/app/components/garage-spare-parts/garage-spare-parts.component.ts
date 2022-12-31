@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
-import { LoginService } from 'src/app/services/login.service';
+import { LoginService } from '../../services/login.service';
 import { SparePartsCartService } from '../../services/spare-parts-cart.service';
 import { SparePartsListService } from '../../services/spare-parts-list.service';
 import { SparePart } from '../garage-spare-parts/spare-parts-list/spare-part';

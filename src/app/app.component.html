@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark header">
   <div class="container-fluid">
     <a class="navbar-brand" [routerLink]="['/']">Mestelan Competicion</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,8 +27,10 @@
     </div>
   </div>
 </nav>
-<router-outlet></router-outlet>
-<footer class="bg-dark text-light mt-2">
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>
+<footer class="text-light mt-2 footer bottom">
   <ul class="nav justify-content-center border-bottom">
     <li class="nav-item"><a [routerLink]="['/']" class="nav-link px-2 text-light">Home</a></li>
     <li class="nav-item"><a class="nav-link px-2 text-light">Facebook</a></li>

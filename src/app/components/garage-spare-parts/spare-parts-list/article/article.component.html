@@ -1,0 +1,24 @@
+<div class="bg-light article-container d-flex flex-column align-items-center">
+    <h5>{{sparePart.name}}</h5>
+    <p [ngClass]="{'promotion' : sparePart.promotion}">Marca: {{sparePart.brand}}</p>
+    <p *ngIf="sparePart.promotion == true; else noPromotion" [ngClass]="{'promotion' : sparePart.promotion}">Precio: {{sparePart.amount*.8 | currency}}</p>
+    <ng-template #noPromotion>
+        <p [ngClass]="{'promotion' : sparePart.promotion}">Precio: {{sparePart.amount | currency}}</p>
+    </ng-template>
+    <p *ngIf="sparePart.stock == 0; else noStock" class="badge bg-danger ms-2 mt-2">SIN STOCK</p>
+    <ng-template #noStock>
+        <p [ngClass]="{'promotion' : sparePart.promotion}">Stock: {{sparePart.stock}}</p>
+    </ng-template>
+    <div class="d-flex flex-row gap-2">
+        <app-input-integer 
+            [(quantity)]="sparePart.quantity" 
+            [limit]="sparePart.stock" 
+            (maxReached)="maxReached($event)"
+            >
+        </app-input-integer>
+        <button class="btn btn-danger btn-sm" 
+                (click)="addToCart(sparePart)"
+                >Agregar
+        </button>
+    </div>
+</div>

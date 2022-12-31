@@ -73,4 +73,14 @@ export class GarageJobsComponent implements OnInit {
     console.log(msj);
     this.ngOnInit();
   }
+
+  checkLoggedIn(): boolean{
+    if(!this.loginService.checkLoggedIn())
+      this.router.navigate(['login']);;
+    return true;
+  }
+
+  checkAdmin(): boolean{
+    return this.loginService.checkAdmin()
+  }
 }

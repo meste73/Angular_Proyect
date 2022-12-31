@@ -34,4 +34,8 @@ export class JobsListComponent{
   checkLoggedIn(): boolean{
     return this.loginService.checkLoggedIn();
   }
+
+  checkAdmin(): boolean{
+    return this.loginService.checkAdmin()
+  }
 }

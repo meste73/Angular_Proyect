@@ -1,52 +1,8 @@
-<table class="table table-secondary">
-    <thead class="table-dark">
-        <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Marca</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Comprar</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let sparePart of spareParts">
-            <td [ngClass]="{'promotion' : sparePart.promotion}">
-                {{sparePart.name}}
-            </td>
-            <td [ngClass]="{'promotion' : sparePart.promotion}">
-                {{sparePart.brand}}
-            </td>
-            <td *ngIf="sparePart.promotion == true; else noPromotion" [ngClass]="{'promotion' : sparePart.promotion}">
-                {{sparePart.amount*0.8 | currency}}
-            </td>
-            <ng-template #noPromotion>
-                <td [ngClass]="{'promotion' : sparePart.promotion}">
-                    {{sparePart.amount | currency}}
-                </td>
-            </ng-template>
-            <td>
-                <span *ngIf="sparePart.stock == 0; else noStock" class="badge bg-danger ms-2 mt-2">
-                    SIN STOCK
-                </span>
-                <ng-template #noStock>
-                    <span [ngClass]="{'promotion' : sparePart.promotion}">
-                        {{sparePart.stock}}
-                    </span>
-                </ng-template>
-            </td>
-            <td class="d-flex gap-2">
-                <app-input-integer 
-                    [(quantity)]="sparePart.quantity" 
-                    [limit]="sparePart.stock" 
-                    (maxReached)="maxReached($event)"
-                ></app-input-integer>
-                <button class="btn btn-danger btn-sm" 
-                    (click)="addToCart(sparePart)"
-                >Agregar</button>
-            </td>
-        </tr>
-    </tbody>
-    <div>
-        <p>*Texto resaltado para productos en oferta</p>
+<div class="d-flex flex-row gap-2 flex-wrap">
+    <div *ngFor="let sparePart of spareParts">
+        <app-article [sparePart]="sparePart"></app-article>
     </div>
-</table>
+</div>
+<div class="text-light">
+    <p>*Texto resaltado para productos en oferta</p>
+</div>

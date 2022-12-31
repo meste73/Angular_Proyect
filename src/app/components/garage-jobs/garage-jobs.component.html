@@ -1,6 +1,6 @@
-<div class="container">
-    <div class="d-flex justify-content-center p-3 bg-dark text-light mt-1 mb-1 rounded-2">
-        <h2>Nuestros trabajos</h2>
+<div class="container" *ngIf="checkLoggedIn()">
+    <div class="p-2 text-light mt-1 mb-1 rounded-2">
+        <h2>Siga nuestros trabajos</h2>
     </div>
     <app-jobs-list 
         [jobs]="jobs" 
@@ -8,7 +8,7 @@
         (put1stStep)="put1stStep($event)"
         >
     </app-jobs-list>
-    <div class="form-container mt-3">
+    <div class="form-container mt-3" *ngIf="checkAdmin()">
         <div class="form-add bg-dark p-3 rounded-1">
             <app-jobs-form 
                 *ngIf="addForm; else modifyForm" 
