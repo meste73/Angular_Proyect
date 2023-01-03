@@ -33,7 +33,7 @@ $ProyectoAngular-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($ProyectoAngular-theme);
 
-body{
+.body{
     background-image: url(assets/img/main-background.jpg);
     background-attachment: fixed;
     min-height: 100vh;

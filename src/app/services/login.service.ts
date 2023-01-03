@@ -23,18 +23,8 @@ export class LoginService {
   }
 
   login(user: string, password: string): void{
-    this.getAll().pipe(finalize(() => this.getUser(user)))
+    this.getAll().pipe(finalize(() => this.checkUser(user, password)))
                  .subscribe(data => this.users = data);
-    if(this.user && this.user.password === password){
-      sessionStorage.setItem('user', 'logged');
-      if(this.user.admin)
-        sessionStorage.setItem('admin', 'true');
-      else sessionStorage.setItem('admin', 'false');
-      this.router.navigate(['/specialty']);
-      
-    } else {
-      alert('Datos incorrectos');
-    }
   }
 
   logout(): void{
@@ -57,6 +47,20 @@ export class LoginService {
       return true
     else
       return false
+  }
+
+  private checkUser(email: string, password: string){
+    this.getUser(email);
+    if(this.user && this.user.password === password){
+      sessionStorage.setItem('user', 'logged');
+      if(this.user.admin)
+        sessionStorage.setItem('admin', 'true');
+      else sessionStorage.setItem('admin', 'false');
+      this.router.navigate(['/specialty']);
+      
+    } else {
+      alert('Datos incorrectos');
+    }
   }
 
   private getUser(email: string){
