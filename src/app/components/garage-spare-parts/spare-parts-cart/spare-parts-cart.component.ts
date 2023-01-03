@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { Observable } from 'rxjs';
 import { SparePartsCartService } from '../../../services/spare-parts-cart.service';
-import { SparePart } from '../spare-parts-list/spare-part';
+import { SparePart } from '../../../interfaces/spare-part';
 
 @Component({
   selector: 'app-spare-parts-cart',

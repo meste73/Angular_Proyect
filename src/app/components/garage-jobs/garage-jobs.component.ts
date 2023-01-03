@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { finalize, Observable } from 'rxjs';
 import { JobsDataService } from '../../services/jobs-data.service';
-import { Job } from '../garage-jobs/jobs-list/job';
+import { Job } from '../../interfaces/job';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 

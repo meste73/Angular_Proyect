@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { Job } from '../components/garage-jobs/jobs-list/job';
+import { Job } from '../interfaces/job';
 
 const URL = "https://62b613cd6999cce2e8feb474.mockapi.io/jobs";
 

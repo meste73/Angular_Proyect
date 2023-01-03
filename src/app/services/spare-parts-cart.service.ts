@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SparePart } from '../components/garage-spare-parts/spare-parts-list/spare-part';
+import { SparePart } from '../interfaces/spare-part';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({

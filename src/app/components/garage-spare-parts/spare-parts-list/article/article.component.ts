@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SparePartsCartService } from '../../../../services/spare-parts-cart.service';
-import { SparePart } from '../spare-part';
+import { SparePart } from '../../../../interfaces/spare-part';
 
 @Component({
   selector: 'app-article',

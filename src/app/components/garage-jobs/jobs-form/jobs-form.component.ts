@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { Job } from '../jobs-list/job';
+import { Job } from '../../../interfaces/job';
 
 
 @Component({

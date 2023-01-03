@@ -1,5 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { finalize, Observable } from 'rxjs';
+import { User } from '../interfaces/user';
+
+const URL = "https://62b613cd6999cce2e8feb474.mockapi.io/users";
 
 @Injectable({
   providedIn: 'root'
@@ -7,16 +12,22 @@ import { Router } from '@angular/router';
 
 export class LoginService {
 
-  private user: string = "elmeste.88@gmail.com";
-  private admin: boolean = true;
-  private password: string = "123456";
+  private users!: User[];
+  private user!: User | undefined;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private http: HttpClient) {}
+
+  private getAll(): Observable<User[]>{
+    return this.http.get<User[]>(URL);
+  }
 
   login(user: string, password: string): void{
-    if(this.user === user && this.password === password){
+    this.getAll().pipe(finalize(() => this.getUser(user)))
+                 .subscribe(data => this.users = data);
+    if(this.user && this.user.password === password){
       sessionStorage.setItem('user', 'logged');
-      if(this.admin)
+      if(this.user.admin)
         sessionStorage.setItem('admin', 'true');
       else sessionStorage.setItem('admin', 'false');
       this.router.navigate(['/specialty']);
@@ -46,5 +57,9 @@ export class LoginService {
       return true
     else
       return false
+  }
+
+  private getUser(email: string){
+    this.user = this.users.find(x => x.email === email);
   }
 }

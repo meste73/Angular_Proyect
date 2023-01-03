@@ -17,6 +17,8 @@ import { JobsFormComponent } from './components/garage-jobs/jobs-form/jobs-form.
 import { GarageLoginComponent } from './components/garage-login/garage-login.component';
 import { ArticleComponent } from './components/garage-spare-parts/spare-parts-list/article/article.component';
 
+//Angular Material
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { ArticleComponent } from './components/garage-spare-parts/spare-parts-li
     AppRoutingModule,
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

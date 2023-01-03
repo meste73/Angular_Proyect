@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginService } from '../../../services/login.service';
-import { Job } from './job';
+import { Job } from '../../../interfaces/job';
 
 @Component({
   selector: 'app-jobs-list',

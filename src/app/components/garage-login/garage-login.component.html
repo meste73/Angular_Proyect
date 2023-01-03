@@ -1,32 +1,40 @@
-<div class="form-container mt-2" *ngIf="!checkLoggedIn()">
-    <div class="form-add bg-dark p-3 rounded-1">
-        <h1 class="text-white h3 mb-3 font-weight-normal">Seccion administrador</h1>
-        <form class="form-signin" #f="ngForm" (ngSubmit)="f.form.valid && login()">
-            <div class="form-group">
-                <label for="inputEmail" class="text-white">Usuario</label>
-                <input 
-                    type="email" 
-                    name="user"
-                    [(ngModel)]="user" 
-                    class="form-control" 
-                    placeholder="Ingrese usuario" 
-                    required
-                    >
-            </div>
-            <div>
-                <label for="inputPassword" class="text-white">Contraseña</label>
-                <input 
-                    type="password" 
-                    name="password"
-                    [(ngModel)]="password" 
-                    class="form-control" 
-                    placeholder="Ingrese contraseña" 
-                    required
-                    >
-            </div>
-            <div class="mt-2 form-group d-flex gap-1">
-                <button class="btn btn-success btn-sm" type="submit" *ngIf="!checkLoggedIn()">Login</button>    
-            </div>
-        </form>
+<div class="login-container text-light">
+    <div>
+        <h1>Inicie sesión</h1>
+    </div>
+    <div class="d-flex">
+        <div class="vr"></div>
+    </div>
+    <div class="form-container mt-2" *ngIf="!checkLoggedIn()">
+        <div class="form-add bg-dark p-3 rounded-1">
+            <h1 class="text-white h3 mb-3 font-weight-normal">Seccion administrador</h1>
+            <form class="form-signin" #f="ngForm" (ngSubmit)="f.form.valid && login()">
+                <div class="form-group">
+                    <label for="inputEmail" class="text-white">Usuario</label>
+                    <input 
+                        type="email" 
+                        name="user"
+                        [(ngModel)]="user" 
+                        class="form-control" 
+                        placeholder="Ingrese usuario" 
+                        required
+                        >
+                </div>
+                <div>
+                    <label for="inputPassword" class="text-white">Contraseña</label>
+                    <input 
+                        type="password" 
+                        name="password"
+                        [(ngModel)]="password" 
+                        class="form-control" 
+                        placeholder="Ingrese contraseña" 
+                        required
+                        >
+                </div>
+                <div class="mt-2 form-group d-flex gap-1">
+                    <button class="btn btn-success btn-sm" type="submit" *ngIf="!checkLoggedIn()">Login</button>    
+                </div>
+            </form>
+        </div>
     </div>
 </div>
