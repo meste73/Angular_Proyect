@@ -1,10 +1,17 @@
-.form-add{
-    max-width: 350px;
-}
-
 .form-container{
     display: flex;
     justify-content: center;
+    width: 300px;
+}
+
+.form-input{
+    width: 85%;
+}
+
+.form-button{
+    width: 85%;
+    height: 40px;
+    margin: 0 0 10px 0;
 }
 
 .login-container{
@@ -19,4 +26,9 @@
 .vr{
     color: white;
     height: 250px;
+}
+
+.spinner{
+    width: 50px;
+    margin: auto;
 }

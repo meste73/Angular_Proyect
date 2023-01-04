@@ -9,11 +9,17 @@
 ## Garage-Jobs
 
     Agregar funcionalidad para mostrar un trabajo detallado al clickear en su nombre.
-    Llevar forms a una nueva seccion ( Admin ).
     
-## PD ( investigar )
+## PD
 
-    Internacionalization.
-    Tailwind css.
-    Angular Material.
-    RxJS (pipe, map, filter, reduce).
+    Realizada la migracion del formulario de login desde bootstrap a angular material.
+
+    Modificado el login, para checkear funcionamiento de usuario o admin dejo aca los datos para probar:
+
+    admin:
+    elmeste.88@gmail.com
+    123456
+
+    user:
+    test@gmail.com
+    123456
