@@ -5,6 +5,7 @@ import { JobsDataService } from '../../services/jobs-data.service';
 import { Job } from '../../interfaces/job';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 const URL = "https://62b613cd6999cce2e8feb474.mockapi.io/jobs";
 
@@ -21,10 +22,15 @@ export class GarageJobsComponent implements OnInit {
   title!:string;
   addForm!: boolean;
 
+  displayedColumns: string[] = ['work_name', 'work_description', 'client_name', 'work_id', 'work_status', 'area', 'manager', 'modify', 'delete'];
+  dataSource: MatTableDataSource<Job>;
+
   constructor(private jobsDataService: JobsDataService, 
               private http: HttpClient,
               private loginService: LoginService,
-              private router: Router){}
+              private router: Router){
+                this.dataSource = new MatTableDataSource();
+              }
 
   ngOnInit(): void {
     this.getJobs();
@@ -34,7 +40,9 @@ export class GarageJobsComponent implements OnInit {
   }
 
   getJobs(): void{
-    this.jobs = this.jobsDataService.getAll();
+    this.jobsDataService.getAll().subscribe(data=>{
+      this.dataSource.data = data;
+    });
   }
 
   createEmptyJob(): void{
