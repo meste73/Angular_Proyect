@@ -1,5 +1,5 @@
 export interface Job{
-    id: number;
+    id: number,
     work_name: string,
     work_description: string,
     client_name: string,

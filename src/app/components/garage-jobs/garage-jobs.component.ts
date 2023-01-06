@@ -27,9 +27,17 @@ export class GarageJobsComponent implements OnInit {
               private router: Router){}
 
   ngOnInit(): void {
-    this.jobs = this.jobsDataService.getAll();
+    this.getJobs();
+    this.createEmptyJob();
     this.title = "Agregar trabajo";
     this.addForm = true;
+  }
+
+  getJobs(): void{
+    this.jobs = this.jobsDataService.getAll();
+  }
+
+  createEmptyJob(): void{
     this.job = {
       id: 0,
       work_name: "",
@@ -61,6 +69,11 @@ export class GarageJobsComponent implements OnInit {
     this.addForm = false;
   }
 
+  modify(job: Job): void{
+    this.put1stStep(job);
+    this.job = job;
+  }
+
   put(job: Job): void{
     this.jobsDataService.setManager(job);
     let urlPut = URL + "/" + this.job.id;
@@ -74,9 +87,13 @@ export class GarageJobsComponent implements OnInit {
     this.ngOnInit();
   }
 
+  showInfo(msj: string): void{
+    alert(msj);
+  }
+
   checkLoggedIn(): boolean{
     if(!this.loginService.checkLoggedIn())
-      this.router.navigate(['login']);;
+      this.router.navigate(['login']);
     return true;
   }
 

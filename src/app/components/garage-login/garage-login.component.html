@@ -1,5 +1,7 @@
 <div class="login-container text-light">
-    <mat-spinner diameter="40" *ngIf="loading" class="spinner"></mat-spinner>
+    <div *ngIf="loading">
+        <mat-spinner diameter="40" class="spinner"></mat-spinner>
+    </div>
     <div *ngIf="!loading" class="login-container text-light">
         <div>
             <h1>Inicie sesión</h1>

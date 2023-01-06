@@ -10,7 +10,6 @@ import { GarageHomeComponent } from './components/garage-home/garage-home.compon
 import { GarageAboutComponent } from './components/garage-about/garage-about.component';
 import { GarageJobsComponent } from './components/garage-jobs/garage-jobs.component';
 import { InputIntegerComponent } from './components/input-integer/input-integer.component';
-import { JobsListComponent } from './components/garage-jobs/jobs-list/jobs-list.component';
 import { SparePartsListComponent } from './components/garage-spare-parts/spare-parts-list/spare-parts-list.component';
 import { SparePartsCartComponent } from './components/garage-spare-parts/spare-parts-cart/spare-parts-cart.component';
 import { JobsFormComponent } from './components/garage-jobs/jobs-form/jobs-form.component';
@@ -24,6 +23,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     GarageAboutComponent,
     GarageJobsComponent,
     InputIntegerComponent,
-    JobsListComponent,
     SparePartsListComponent,
     SparePartsCartComponent,
     JobsFormComponent,
@@ -51,7 +51,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

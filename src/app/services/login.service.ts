@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { BehaviorSubject, finalize, Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
+import { SpinnerService } from './spinner.service';
 
 const URL = "https://62b613cd6999cce2e8feb474.mockapi.io/users";
 
@@ -15,13 +16,11 @@ export class LoginService {
 
   private users!: User[];
   private user!: User | undefined;
-  private loading: boolean = false;
-  loadingSubject: BehaviorSubject<boolean> = new BehaviorSubject(this.loading);
-  _loading: Observable<boolean> = this.loadingSubject.asObservable();
 
   constructor(private router: Router,
               private http: HttpClient,
-              private _snackBar: MatSnackBar) {}
+              private _snackBar: MatSnackBar,
+              private spinnerService: SpinnerService) {}
   
   //Get all users from API
   private getAll(): Observable<User[]>{
@@ -41,8 +40,7 @@ export class LoginService {
       sessionStorage.removeItem('admin');
       this.router.navigate(['/']);
     }
-    this.loading = false;
-    this.loadingSubject.next(this.loading);
+    this.spinnerService.setLoading(false);
   }
 
   //Check if user is already logged
@@ -66,8 +64,7 @@ export class LoginService {
   private checkUser(email: string, password: string){
     this.getUser(email);
     if(this.user && this.user.password === password){
-      this.loading = true;
-      this.loadingSubject.next(this.loading);
+      this.spinnerService.setLoading(true);
       setTimeout(() => {
         sessionStorage.setItem('user', 'logged');
         if(this.user && this.user.admin)
