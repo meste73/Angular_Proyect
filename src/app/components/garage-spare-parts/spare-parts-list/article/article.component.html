@@ -9,16 +9,19 @@
     <ng-template #noStock>
         <p [ngClass]="{'promotion' : sparePart.promotion}">Stock: {{sparePart.stock}}</p>
     </ng-template>
-    <div class="d-flex flex-row gap-2">
+    <div class="d-flex flex-row gap-2 align-items-center">
         <app-input-integer 
             [(quantity)]="sparePart.quantity" 
             [limit]="sparePart.stock" 
             (maxReached)="maxReached($event)"
             >
         </app-input-integer>
-        <button class="btn btn-danger btn-sm" 
-                (click)="addToCart(sparePart)"
-                >Agregar
-        </button>
+        <mat-icon
+            title="Agregar al carrito"
+            class="add-icon"
+            (click)="addToCart(sparePart)"
+            >
+            add_shopping_cart
+        </mat-icon>
     </div>
 </div>

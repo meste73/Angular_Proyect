@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SpinnerService } from 'src/app/services/spinner.service';
 import { LoginService } from '../../services/login.service';
 
 @Component({
@@ -16,13 +17,14 @@ export class GarageLoginComponent {
   loading!: boolean;
 
   constructor(private loginService: LoginService,
+              private spinnerService: SpinnerService,
               private router:Router,
               private fb: FormBuilder){
     this.form = fb.group({
       user: ['', Validators.required],
       password: ['', Validators.required]
     }); 
-    this.loginService._loading.subscribe(data => this.loading = data);           
+    this.spinnerService._loading.subscribe(data => this.loading = data);           
   }
 
   login():void{

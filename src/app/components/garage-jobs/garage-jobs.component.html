@@ -1,34 +1,79 @@
 <div class="container" *ngIf="checkLoggedIn()">
-    <div class="p-2 text-light mt-1 mb-1 rounded-2">
-        <h2>Siga nuestros trabajos</h2>
-    </div>
-    <app-jobs-list 
-        [jobs]="jobs" 
-        (delete)="delete($event)" 
-        (put1stStep)="put1stStep($event)"
-        >
-    </app-jobs-list>
-    <div class="form-container mt-3" *ngIf="checkAdmin()">
-        <div class="form-add bg-dark p-3 rounded-1">
-            <app-jobs-form 
-                *ngIf="addForm; else modifyForm" 
-                [job]="job" [title]="title" 
-                [addForm]="addForm" 
-                (add)="add($event)" 
-                (put)="put($event)"
-                >
-            </app-jobs-form>
-            <ng-template #modifyForm>
+    <div>
+        <div class="p-2 text-light mt-1 mb-1 rounded-2">
+            <h2>Siga nuestros trabajos</h2>
+        </div>
+        <div class="bg-dark rounded-1 pt-1 pb-1">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Cliente</th>
+                        <th>ID trabajo</th>
+                        <th>Estado</th>
+                        <th>Sector</th>
+                        <th>Responsable</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="table-secondary">
+                    <tr *ngFor="let job of jobs | async" >
+                        <td>{{job.work_name}}</td>
+                        <td *ngIf="job.work_description.length < 20; else elseStatement">{{job.work_description | slice:0:20}}</td>
+                        <ng-template #elseStatement>
+                            <td class="cursor" (click)="showInfo(job.work_description)">{{job.work_description | slice:0:20}}...</td>
+                        </ng-template>
+                        <td>{{job.client_name}}</td>
+                        <td>{{job.work_id}}</td>
+                        <td>{{job.work_status}}</td>
+                        <td>{{job.area}}</td>
+                        <td>{{job.manager}}</td>
+                        <td>
+                            <mat-icon
+                                class="cursor edit-btn-color"
+                                (click)="modify(job)"
+                                *ngIf="checkAdmin()"
+                                >
+                                edit
+                            </mat-icon>
+                        </td>
+                        <td>
+                            <mat-icon
+                                class="cursor delete-btn-color"
+                                (click)="delete(job.id)"
+                                *ngIf="checkAdmin()"
+                                >
+                                delete_forever
+                            </mat-icon>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-container mt-3" *ngIf="checkAdmin()">
+            <div class="form-add bg-dark p-3 rounded-1">
                 <app-jobs-form 
-                    [job]="job" 
-                    [title]="title" 
+                    *ngIf="addForm; else modifyForm" 
+                    [job]="job" [title]="title" 
                     [addForm]="addForm" 
                     (add)="add($event)" 
-                    (put)="put($event)" 
-                    (putCancel)="putCancel($event)"
+                    (put)="put($event)"
                     >
                 </app-jobs-form>
-            </ng-template>
+                <ng-template #modifyForm>
+                    <app-jobs-form 
+                        [job]="job" 
+                        [title]="title" 
+                        [addForm]="addForm" 
+                        (add)="add($event)" 
+                        (put)="put($event)" 
+                        (putCancel)="putCancel($event)"
+                        >
+                    </app-jobs-form>
+                </ng-template>
+            </div>
         </div>
     </div>
 </div>
