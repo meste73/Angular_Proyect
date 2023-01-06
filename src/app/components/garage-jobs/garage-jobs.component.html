@@ -4,52 +4,71 @@
             <h2>Siga nuestros trabajos</h2>
         </div>
         <div class="bg-dark rounded-1 pt-1 pb-1">
-            <table class="table table-striped">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Descripcion</th>
-                        <th>Cliente</th>
-                        <th>ID trabajo</th>
-                        <th>Estado</th>
-                        <th>Sector</th>
-                        <th>Responsable</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody class="table-secondary">
-                    <tr *ngFor="let job of jobs | async" >
-                        <td>{{job.work_name}}</td>
-                        <td *ngIf="job.work_description.length < 20; else elseStatement">{{job.work_description | slice:0:20}}</td>
-                        <ng-template #elseStatement>
-                            <td class="cursor" (click)="showInfo(job.work_description)">{{job.work_description | slice:0:20}}...</td>
-                        </ng-template>
-                        <td>{{job.client_name}}</td>
-                        <td>{{job.work_id}}</td>
-                        <td>{{job.work_status}}</td>
-                        <td>{{job.area}}</td>
-                        <td>{{job.manager}}</td>
-                        <td>
-                            <mat-icon
-                                class="cursor edit-btn-color"
-                                (click)="modify(job)"
-                                *ngIf="checkAdmin()"
-                                >
-                                edit
-                            </mat-icon>
-                        </td>
-                        <td>
-                            <mat-icon
-                                class="cursor delete-btn-color"
-                                (click)="delete(job.id)"
-                                *ngIf="checkAdmin()"
-                                >
-                                delete_forever
-                            </mat-icon>
-                        </td>
-                    </tr>
-                </tbody>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z10 ">
+                'work_name', 'work_description', 'client_name', 'work_id', 'work_status', 'area', 'manager'
+                <ng-container matColumnDef="work_name">
+                    <th mat-header-cell *matHeaderCellDef class="bg-dark text-light"> Trabajo </th>
+                    <td mat-cell *matCellDef="let element"> {{element.work_name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="work_description">
+                    <th mat-header-cell *matHeaderCellDef class="bg-dark text-light"> Descripcion </th>
+                    <td mat-cell *matCellDef="let element"> {{element.work_description}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="client_name">
+                    <th mat-header-cell *matHeaderCellDef class="bg-dark text-light"> Cliente </th>
+                    <td mat-cell *matCellDef="let element"> {{element.client_name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="work_id">
+                    <th mat-header-cell *matHeaderCellDef class="bg-dark text-light"> Id trabajo </th>
+                    <td mat-cell *matCellDef="let element"> {{element.work_id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="work_status">
+                    <th mat-header-cell *matHeaderCellDef class="bg-dark text-light"> Estado </th>
+                    <td mat-cell *matCellDef="let element"> {{element.work_status}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="area">
+                    <th mat-header-cell *matHeaderCellDef class="bg-dark text-light"> Sector </th>
+                    <td mat-cell *matCellDef="let element"> {{element.area}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="manager">
+                    <th mat-header-cell *matHeaderCellDef class="bg-dark text-light"> Responsable </th>
+                    <td mat-cell *matCellDef="let element"> {{element.manager}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="modify">
+                    <th mat-header-cell *matHeaderCellDef class="bg-dark text-light"></th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-icon
+                            class="cursor edit-btn-color"
+                            (click)="modify(element.id)"
+                            *ngIf="checkAdmin()"
+                            >
+                            edit
+                        </mat-icon>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="delete">
+                    <th mat-header-cell *matHeaderCellDef class="bg-dark text-light"></th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-icon
+                            class="cursor delete-btn-color"
+                            (click)="delete(element.id)"
+                            *ngIf="checkAdmin()"
+                            >
+                            delete_forever
+                        </mat-icon>
+                    </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
         </div>
         <div class="form-container mt-3" *ngIf="checkAdmin()">
@@ -58,16 +77,14 @@
                     *ngIf="addForm; else modifyForm" 
                     [job]="job" [title]="title" 
                     [addForm]="addForm" 
-                    (add)="add($event)" 
-                    (put)="put($event)"
+                    (add)="add($event)"
                     >
                 </app-jobs-form>
                 <ng-template #modifyForm>
                     <app-jobs-form 
-                        [job]="job" 
+                        [job]="job"
                         [title]="title" 
-                        [addForm]="addForm" 
-                        (add)="add($event)" 
+                        [addForm]="addForm"  
                         (put)="put($event)" 
                         (putCancel)="putCancel($event)"
                         >
