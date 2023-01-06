@@ -1,10 +1,13 @@
 <div class="container" *ngIf="checkLoggedIn()">
-    <div>
-        <div class="p-2 text-light mt-1 mb-1 rounded-2">
-            <h2>Siga nuestros trabajos</h2>
-        </div>
-        <div class="bg-dark rounded-1 pt-1 pb-1">
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z10 ">
+    <div class="p-2 text-light mt-1 mb-1 rounded-2">
+        <h2>Siga nuestros trabajos</h2>
+    </div>
+    <div *ngIf="loading; else e" class="spinner-container">
+        <mat-spinner diameter="40" class="spinner"></mat-spinner>
+    </div>
+    <ng-template #e>
+        <div class="bg-dark rounded-1 p-1">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
                 'work_name', 'work_description', 'client_name', 'work_id', 'work_status', 'area', 'manager'
                 <ng-container matColumnDef="work_name">
                     <th mat-header-cell *matHeaderCellDef class="bg-dark text-light"> Trabajo </th>
@@ -92,5 +95,5 @@
                 </ng-template>
             </div>
         </div>
-    </div>
+    </ng-template>
 </div>
