@@ -6,6 +6,7 @@ import { Job } from '../../interfaces/job';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 const URL = "https://62b613cd6999cce2e8feb474.mockapi.io/jobs";
 
@@ -21,6 +22,7 @@ export class GarageJobsComponent implements OnInit {
   job!:Job;
   title!:string;
   addForm!: boolean;
+  loading!: boolean;
 
   displayedColumns: string[] = ['work_name', 'work_description', 'client_name', 'work_id', 'work_status', 'area', 'manager', 'modify', 'delete'];
   dataSource: MatTableDataSource<Job>;
@@ -28,8 +30,10 @@ export class GarageJobsComponent implements OnInit {
   constructor(private jobsDataService: JobsDataService, 
               private http: HttpClient,
               private loginService: LoginService,
-              private router: Router){
+              private router: Router,
+              private spinnerService: SpinnerService){
                 this.dataSource = new MatTableDataSource();
+                this.spinnerService._loading.subscribe(data=> this.loading = data);
               }
 
   ngOnInit(): void {
@@ -40,7 +44,10 @@ export class GarageJobsComponent implements OnInit {
   }
 
   getJobs(): void{
-    this.jobsDataService.getAll().subscribe(data=>{
+    this.spinnerService.setLoading(true);
+    this.jobsDataService.getAll().pipe(finalize(()=>{
+      this.spinnerService.setLoading(false);
+    })).subscribe(data=>{
       this.dataSource.data = data;
     });
   }

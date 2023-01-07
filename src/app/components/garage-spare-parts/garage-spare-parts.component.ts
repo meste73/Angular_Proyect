@@ -5,6 +5,7 @@ import { LoginService } from '../../services/login.service';
 import { SparePartsCartService } from '../../services/spare-parts-cart.service';
 import { SparePartsListService } from '../../services/spare-parts-list.service';
 import { SparePart } from '../../interfaces/spare-part';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-garage-spare-parts',
@@ -15,15 +16,29 @@ import { SparePart } from '../../interfaces/spare-part';
 export class GarageSparePartsComponent implements OnInit {
 
   spareParts!: SparePart[];
+  loading!: boolean;
 
   constructor(private sparePartsCart: SparePartsCartService, 
               private sparePartsList: SparePartsListService,
               private loginService: LoginService,
-              private router: Router){}
+              private spinnerService: SpinnerService,
+              private router: Router){
+                this.spinnerService._loading.subscribe(data=>{
+                  this.loading = data;
+                })
+              }
 
   ngOnInit(): void{
+    this.getSpareParts();
+  }
+
+  getSpareParts(): void{
+    this.spinnerService.setLoading(true);
     this.sparePartsList.getAll()
-        .pipe(finalize(() => this.checkingStock()))
+        .pipe(finalize(() => {
+          this.spinnerService.setLoading(false);
+          this.checkingStock();
+        }))
         .subscribe(data => this.spareParts = data);
   }
 
