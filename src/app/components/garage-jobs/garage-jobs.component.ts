@@ -7,6 +7,8 @@ import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { SpinnerService } from 'src/app/services/spinner.service';
+import { MatDialog } from '@angular/material/dialog';
+import { JobsFormComponent } from './jobs-form/jobs-form.component';
 
 const URL = "https://62b613cd6999cce2e8feb474.mockapi.io/jobs";
 
@@ -31,7 +33,8 @@ export class GarageJobsComponent implements OnInit {
               private http: HttpClient,
               private loginService: LoginService,
               private router: Router,
-              private spinnerService: SpinnerService){
+              private spinnerService: SpinnerService,
+              private dialog: MatDialog){
                 this.dataSource = new MatTableDataSource();
                 this.spinnerService._loading.subscribe(data=> this.loading = data);
               }
@@ -114,5 +117,11 @@ export class GarageJobsComponent implements OnInit {
 
   checkAdmin(): boolean{
     return this.loginService.checkAdmin()
+  }
+
+  addEditJob(): void{
+    const dialogRef = this.dialog.open(JobsFormComponent, {
+      width: '500px'
+    });
   }
 }
