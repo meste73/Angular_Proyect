@@ -10,10 +10,10 @@
           <a class="nav-link" [routerLink]="['about']">Sobre nosotros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['list']">Repuestos</a>
+          <a class="nav-link" [routerLink]="['cart']">Repuestos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" [routerLink]="['specialty']">Trabajos</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['jobs']">Trabajos</a>
         </li>
         <li class="nav-item" *ngIf="!checkLoggedIn(); else e">
           <a class="nav-link" aria-current="page" [routerLink]="['login']">Login</a>

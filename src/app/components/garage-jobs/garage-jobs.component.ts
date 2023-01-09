@@ -4,7 +4,7 @@ import { finalize, Observable } from 'rxjs';
 import { JobsDataService } from '../../services/jobs-data.service';
 import { Job } from '../../interfaces/job';
 import { LoginService } from '../../services/login.service';
-import { Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { SpinnerService } from 'src/app/services/spinner.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,7 +18,7 @@ const URL = "https://62b613cd6999cce2e8feb474.mockapi.io/jobs";
   styleUrls: ['./garage-jobs.component.scss']
 })
 
-export class GarageJobsComponent implements OnInit {
+export class GarageJobsComponent implements OnInit, CanActivate {
 
   job!:Job;
   loading!: boolean;
@@ -34,11 +34,15 @@ export class GarageJobsComponent implements OnInit {
                 this.dataSource = new MatTableDataSource();
                 this.spinnerService._loading.subscribe(data=> this.loading = data);
               }
-
+  
   ngOnInit(): void {
     this.getJobs();
   }
-
+  
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    return this.checkLoggedIn();
+  }
+    
   getJobs(): void{
     this.spinnerService.setLoading(true);
     this.jobsDataService.getAll().pipe(finalize(()=>{

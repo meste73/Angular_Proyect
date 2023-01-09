@@ -5,6 +5,7 @@ import { GarageSparePartsComponent } from './components/garage-spare-parts/garag
 import { GarageAboutComponent } from './components/garage-about/garage-about.component';
 import { GarageJobsComponent } from './components/garage-jobs/garage-jobs.component';
 import { GarageLoginComponent } from './components/garage-login/garage-login.component';
+import { RuteGuard } from './rute.guard';
 
 const routes: Routes = [
   {
@@ -17,12 +18,14 @@ const routes: Routes = [
     component: GarageHomeComponent,
   },
   {
-    path: 'specialty',
+    path: 'jobs',
     component: GarageJobsComponent,
+    canActivate: [RuteGuard]
   },
   {
-    path: 'list',
+    path: 'cart',
     component: GarageSparePartsComponent,
+    canActivate: [RuteGuard]
   },
   {
     path: 'about',
