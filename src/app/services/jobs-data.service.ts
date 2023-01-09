@@ -17,13 +17,19 @@ export class JobsDataService {
     return this.http.get<Job[]>(URL);
   }
 
-  setManager(job: Job): void{
+  getJob(id: number): Observable<Job>{
+    let url = URL + '/' + id;
+    return this.http.get<Job>(url);
+  }
+
+  setManager(job: Job): Job{
     switch(job.area){
-      case 'Cajas': job.manager = 'Ezequiel Mestelan';
+      case 'Cajas de cambios': job.manager = 'Ezequiel Mestelan';
       break;
       case 'Torneria': job.manager = 'Daniel Mestelan';
       break;
       default: job.manager = 'error';
     }
+    return job;
   }
 }

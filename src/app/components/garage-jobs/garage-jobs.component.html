@@ -50,7 +50,7 @@
                         <mat-icon
                             matTooltip="Modificar trabajo"
                             class="cursor edit-btn-color"
-                            (click)="addEditJob()"
+                            (click)="addEditJob(false, element.id)"
                             *ngIf="checkAdmin()"
                             >
                             edit
@@ -76,34 +76,11 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
         </div>
-        <!--
-        <div class="form-container mt-3" *ngIf="checkAdmin()">
-            <div class="form-add bg-dark p-3 rounded-1">
-                <app-jobs-form 
-                    *ngIf="addForm; else modifyForm" 
-                    [job]="job" [title]="title" 
-                    [addForm]="addForm" 
-                    (add)="add($event)"
-                    >
-                </app-jobs-form>
-                <ng-template #modifyForm>
-                    <app-jobs-form 
-                        [job]="job"
-                        [title]="title" 
-                        [addForm]="addForm"  
-                        (put)="put($event)" 
-                        (putCancel)="putCancel($event)"
-                        >
-                    </app-jobs-form>
-                </ng-template>
-            </div>
-        </div>
-        -->
         <div class="add-btn">
             <button 
                 mat-raised-button 
                 color="warn"
-                (click)="addEditJob()"
+                (click)="addEditJob(true, 0)"
                 >
                 Agregar trabajo
             </button>
