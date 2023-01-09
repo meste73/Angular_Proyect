@@ -47,8 +47,9 @@ export class LoginService {
   checkLoggedIn(): boolean{
     if(sessionStorage.getItem('user'))
       return true
-    else 
+    else {
       return false;
+    }
   }
 
   //Check if the user logged is an admin
@@ -69,8 +70,14 @@ export class LoginService {
         sessionStorage.setItem('user', 'logged');
         if(this.user && this.user.admin)
           sessionStorage.setItem('admin', 'true');
-        else sessionStorage.setItem('admin', 'false');
-        this.router.navigate(['/specialty']);
+        else 
+          sessionStorage.setItem('admin', 'false');
+        this.router.navigate(['/']);
+        this._snackBar.open("Usted se ha logueado como " + this.user?.name, 'close',{
+          duration: 5000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
       }, 1500)
     } else {
       this.showError();

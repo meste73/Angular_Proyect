@@ -61,7 +61,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTooltipModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [Permissions],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
