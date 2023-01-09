@@ -20,12 +20,8 @@ const URL = "https://62b613cd6999cce2e8feb474.mockapi.io/jobs";
 
 export class GarageJobsComponent implements OnInit {
 
-  jobs!:Observable<Job[]>;
   job!:Job;
-  title!:string;
-  addForm!: boolean;
   loading!: boolean;
-
   displayedColumns: string[] = ['work_name', 'work_description', 'client_name', 'work_id', 'work_status', 'area', 'manager', 'modify', 'delete'];
   dataSource: MatTableDataSource<Job>;
 
@@ -41,9 +37,6 @@ export class GarageJobsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getJobs();
-    this.createEmptyJob();
-    this.title = "Agregar trabajo";
-    this.addForm = true;
   }
 
   getJobs(): void{
@@ -55,58 +48,10 @@ export class GarageJobsComponent implements OnInit {
     });
   }
 
-  createEmptyJob(): void{
-    this.job = {
-      id: 0,
-      work_name: "",
-      work_description: "",
-      client_name: "",
-      work_id: 0,
-      work_status: "",
-      area: "",
-      manager: ""
-    }
-  }
-
-  add(job: Job): void{
-    this.jobsDataService.setManager(job);
-    this.http.post<Job>(URL, job)
-             .pipe(finalize(() => this.ngOnInit()))    
-             .subscribe( response => console.log(response));
-  }
-
   delete(id: number): void{
     this.http.delete<Job>(URL + "/" + id)
              .pipe(finalize(() => this.ngOnInit()))
              .subscribe(response => console.log(response));
-  }
-
-  put1stStep(job: Job): void{
-    this.title = "Modificar trabajo";
-    this.job = job;
-    this.addForm = false;
-  }
-
-  modify(job: Job): void{
-    this.put1stStep(job);
-    this.job = job;
-  }
-
-  put(job: Job): void{
-    this.jobsDataService.setManager(job);
-    let urlPut = URL + "/" + this.job.id;
-    this.http.put<Job>(urlPut, job)
-             .pipe(finalize(() => this.ngOnInit()))    
-             .subscribe( response => console.log(response));
-  }
-
-  putCancel(msj: string): void{
-    console.log(msj);
-    this.ngOnInit();
-  }
-
-  showInfo(msj: string): void{
-    alert(msj);
   }
 
   checkLoggedIn(): boolean{
@@ -119,9 +64,34 @@ export class GarageJobsComponent implements OnInit {
     return this.loginService.checkAdmin()
   }
 
-  addEditJob(): void{
+  addEditJob(status: boolean, id: number): void{
+    if(status)
+      this.addJob(status);
+    else{
+      let job: Job;
+      this.jobsDataService.getJob(id).pipe(finalize(()=> this.editJob(status, job))).subscribe(data => job = data);
+    }
+  }
+
+  addJob(status: boolean){
     const dialogRef = this.dialog.open(JobsFormComponent, {
-      width: '500px'
+      width: '500px',
+      disableClose: true,
+      data: {status: status}
+    }).afterClosed().subscribe(data => {
+      this.ngOnInit();
+    });
+  }
+
+  editJob(status: boolean, job: Job){
+    console.log(job);
+    const dialogRef = this.dialog.open(JobsFormComponent, {
+      width: '500px',
+      disableClose: true,
+      data: {status: status,
+             job: job}
+    }).afterClosed().subscribe(data => {
+      this.ngOnInit();
     });
   }
 }

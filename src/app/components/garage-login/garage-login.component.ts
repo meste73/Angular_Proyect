@@ -11,8 +11,6 @@ import { LoginService } from '../../services/login.service';
 })
 export class GarageLoginComponent {
 
-  user!: string;
-  password!: string;
   form: FormGroup;
   loading!: boolean;
 
